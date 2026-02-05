@@ -1,0 +1,8181 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Natiijada Imtixaanka Kalka 1aad - Hagardiid</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Library for Confetti Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --primary-blue: #002060;
+      --secondary-blue: #007bff;
+      --accent-gold: #FFD700;
+      --light-gray: #f5f7fa;
+      --dark-gray: #333;
+      --success-green: #28a745;
+      --warning-orange: #fd7e14;
+      --danger-red: #dc3545;
+      --admin-purple: #6f42c1;
+      --admin-teal: #20c997;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--light-gray);
+      margin: 0;
+      padding: 20px;
+      color: var(--dark-gray);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* ========== WELCOME HEADER ========== */
+    .welcome-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      padding: 50px 30px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      animation: curtain-slide 1s ease-out forwards;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
+    }
+    
+    .welcome-subtitle {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #eef7ff;
+      margin-top: 15px;
+      opacity: 0.9;
+    }
+    
+    @keyframes curtain-slide {
+      0% {
+        transform: translateY(-120%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .welcome-header::after {
+      content: '';
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      border-radius: 10px;
+      background: var(--accent-gold);
+      box-shadow: 0 0 20px var(--accent-gold);
+    }
+    
+    .container {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      border-top: 5px solid var(--primary-blue);
+    }
+    
+    /* Modern Header Section */
+    .header-section {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .header-section::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue), var(--primary-blue));
+      border-radius: 2px;
+    }
+    
+    .school-logo {
+      height: 300px;
+      margin-bottom: 10px;
+    }
+    
+    .school-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 5px 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .exam-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--secondary-blue);
+      margin: 5px 0;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .academic-year {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+      margin: 5px 0 10px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .academic-year::before,
+    .academic-year::after {
+      content: "✦"; 
+      color: var(--accent-gold);
+      margin: 0 5px;
+      font-size: 12px;
+    }
+    
+    /* ========== PROFESSIONAL ADMIN SECTION ========== */
+    .admin-section {
+      background: linear-gradient(135deg, #6A040F, #FFECD1);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3);
+      margin: 25px 0;
+      border: 0px solid rgba(255,255,255,0.1);
+      max-width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .admin-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: pulse 4s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .admin-toggle {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .admin-toggle:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .admin-login-form {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .admin-login-form.show {
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    .admin-input-group {
+      margin-bottom: 15px;
+    }
+    
+    .admin-label {
+      display: block;
+      color: white;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 20px;
+    }
+    
+    .admin-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.9);
+      font-size: 16px;
+      transition: all 0.3s;
+      color: black;
+    }
+    
+    .admin-input:focus {
+      outline: none;
+      border-color: blue;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+    }
+    
+    .admin-submit-btn {
+      width: 100%;
+      background: white;
+      color: var(--admin-purple);
+      border: 1px;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .admin-submit-btn:hover {
+      background: #f8f9fa;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Professional Admin Panel */
+    .admin-panel {
+      display: none;
+      background: #F5F5F5;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+      border: 2px solid var(--admin-teal);
+      box-shadow: 0 10px 30px rgba(32, 201, 151, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .admin-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+    }
+    
+    .admin-panel.show {
+      display: block;
+      animation: slideDown 0.5s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .admin-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e9ecef;
+    }
+    
+    .admin-panel-title {
+      font-size: 24px;
+      color: var(--admin-purple);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .admin-logout-btn {
+      background: var(--danger-red);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .admin-logout-btn:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+    }
+    
+    .admin-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .admin-btn {
+      background: linear-gradient(135deg, #2D3436, #0984E3);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+    }
+    
+    .admin-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(111, 66, 193, 0.4);
+    }
+    
+    .admin-btn:active {
+      transform: translateY(-1px);
+    }
+    
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border-left: 4px solid var(--admin-teal);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
+    .stat-icon {
+      font-size: 24px;
+      color: var(--admin-purple);
+      margin-bottom: 10px;
+    }
+    
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--admin-purple);
+      margin: 5px 0;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .admin-data-section {
+      margin-top: 25px;
+    }
+    
+    .data-section-title {
+      font-size: 20px;
+      color: var(--admin-purple);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e9ecef;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .students-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .students-table th {
+      background: linear-gradient(135deg, #0A3D62, #82CCDD);
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .students-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e9ecef;
+      font-size: 14px;
+    }
+    
+    .students-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .students-table tr:hover {
+      background-color: #e3f2fd;
+    }
+    
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .status-passed {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .status-failed {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+.registration-section {
+  background: lightblue;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin: 15px auto;
+  border: 2px solid rgba(0,0,0,0.05);
+  max-width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    }
+    
+    .input-title {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .input-field {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 16px;
+      border: 2px solid #e0e6ed;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background-color: #f8fafc;
+    }
+    
+    .input-field:focus {
+      border-color: var(--secondary-blue);
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+      outline: none;
+      background-color: white;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: all 0.3s;
+      box-shadow: 0 3px 8px rgba(0,32,96,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0,32,96,0.3);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Student Info Section */
+    .student-info-container {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #e0e6ed;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .student-info-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-blue));
+    }
+    
+    .student-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .student-info-title {
+      font-size: 18px;
+      color: var(--primary-blue);
+      font-weight: 800;
+      position: relative;
+      padding-left: 10px;
+    }
+    
+    .student-info-title::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 10px;
+      width: 40px;
+      height: 2px;
+      background: var(--secondary-blue);
+    }
+    
+    .student-info-badge {
+      background: var(--secondary-blue);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 400;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .student-info-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .info-row {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      background: rgba(240, 245, 250, 0.5);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      border-left: 3px solid var(--secondary-blue);
+    }
+    
+    .info-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      background: white;
+    }
+    
+    .info-icon {
+      width: 35px;
+      height: 35px;
+      background: var(--secondary-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+      font-size: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .info-label {
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+    
+    .info-value {
+      font-size: 14px;
+      color: var(--primary-blue);
+      font-weight: 700;
+    }
+    
+    /* Results Table */
+    .results-container {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .results-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .results-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .results-badge {
+      background: rgba(255,255,255,0.2);
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .results-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 15px;
+    }
+    
+    .results-table thead th {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      padding: 12px 15px;
+      text-align: center;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    
+    .results-table tbody td {
+      padding: 10px 1px;
+      border-bottom: 1px solid #e0e6ed;
+      text-align: center;
+    }
+    
+    .results-table tbody tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    
+    .results-table tbody tr:hover {
+      background-color: #f1f7fe;
+    }
+    
+    .subject-name {
+      font-weight: 600;
+      color: var(--primary-blue);
+      text-align: left;
+    }
+    
+    .grade-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .grade-value {
+      font-weight: 600;
+      margin-right: 8px;
+      min-width: 25px;
+    }
+    
+    .grade-progress {
+      flex-grow: 1;
+      height: 6px;
+      background: #e0e6ed;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    
+    .grade-progress-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+    
+    /* Progress bar for 22 points will be 100% width and green */
+    .grade-progress-bar.excellent {
+      background-color: #00c853;
+      width: 100% !important; /* Force 100% width for excellent scores */
+    }
+    
+    .performance-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    
+    /* Performance Colors */
+    .excellent { background-color: #00c853; }
+    .good { background-color: #64dd17; }
+    .average { background-color: #ffab00; }
+    .poor { background-color: #ff6d00; }
+    .fail { background-color: #dd2c00; }
+    
+    /* Summary Cards */
+    .summary-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .summary-card {
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-top: 3px solid;
+    }
+    
+    .summary-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .total-card {
+      background: linear-gradient(135deg, #f0f7ff, #e3f2fd);
+      border-top-color: var(--primary-blue);
+    }
+    
+    .average-card {
+      background: linear-gradient(135deg, #f0fff4, #e8f5e9);
+      border-top-color: var(--success-green);
+    }
+    
+    .status-card {
+      background: linear-gradient(135deg, #fff5f5, #ffebee);
+      border-top-color: var(--danger-red);
+    }
+    
+    .success-status {
+      background: linear-gradient(135deg, #f0fff4, #e8f5e9) !important;
+      border-top-color: var(--success-green) !important;
+    }
+    
+    .summary-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #555;
+    }
+    
+    .summary-value {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 10px 0;
+      color: var(--primary-blue);
+    }
+    
+    .success-status .summary-value {
+      color: var(--success-green);
+    }
+    
+    .summary-desc {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    /* Final Comment */
+    .final-comment {
+      background: #fffcf0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      border-left: 3px solid var(--accent-gold);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .comment-header {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .comment-header::before {
+      content: "💡";
+      margin-right: 10px;
+      font-size: 20px;
+      color: var(--accent-gold);
+    }
+    
+    .comment-content {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444;
+    }
+    
+    /* Print Button */
+    .print-button {
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--success-green), #5cb85c);
+      color: white;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 3px 8px rgba(40,167,69,0.3);
+    }
+    
+    .print-button:hover {
+      background: linear-gradient(135deg, #218838, var(--success-green));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(40,167,69,0.4);
+    }
+    
+    .print-button:active {
+      transform: translateY(0);
+    }
+    
+    /* Grading Scale */
+    .grading-scale-compact {
+      margin-top: 20px;
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      border-left: 3px solid #6c757d;
+    }
+    
+    .grading-scale-compact h4 {
+      color: #002060;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .grade-scale-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .grade-scale-row {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+    }
+    
+    .grade-box {
+      flex: 1;
+      min-width: 0;
+      border-radius: 5px;
+      padding: 8px 4px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+    
+    .grade-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    
+    .grade-letter {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: white;
+    }
+    
+    .grade-range {
+      font-size: 11px;
+      font-weight: 700;
+      color: #000;
+    }
+    
+    /* Softer grade colors */
+    .grade-a-plus { background: #4CAF50; }
+    .grade-a { background: #66BB6A; }
+    .grade-a-minus { background: #81C784; }
+    .grade-b-plus { background: #5C9EFF; }
+    .grade-b { background: #4285F4; }
+    .grade-b-minus { background: #7BAAF7; }
+    .grade-c-plus { background: #FFB74D; }
+    .grade-c { background: #FFA726; color: #333; }
+    .grade-c-minus { background: #FF8A65; }
+    .grade-d { background: #FF7043; }
+    .grade-e { background: #FF5722; }
+    .grade-f { background: #78909C; }
+    .empty { visibility: hidden; }
+    
+    /* Signature */
+    .signature {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      border-left: 3px solid var(--secondary-blue);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .signature p {
+      margin: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .signature strong {
+      color: var(--primary-blue);
+    }
+    
+    .signature a {
+      color: var(--secondary-blue);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .signature a:hover {
+      color: var(--primary-blue);
+      text-decoration: underline;
+    }
+    
+    /* Footer */
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 0.85em;
+      color: #666;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    .footer a {
+      color: var(--secondary-blue);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .footer a:hover {
+      color: var(--primary-blue);
+      text-decoration: underline;
+    }
+    
+    /* Responsive Design */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 750px;
+        padding: 30px;
+      }
+      
+      .school-name {
+        font-size: 28px;
+      }
+      
+      .exam-title {
+        font-size: 22px;
+      }
+      
+      .info-row {
+        grid-template-columns: 1.2fr 1.8fr 1.5fr;
+      }
+      
+      .summary-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .admin-controls {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .welcome-header {
+        padding: 30px 20px;
+        font-size: 1.5rem;
+      }
+      
+      .welcome-subtitle {
+        font-size: 1rem;
+      }
+      
+      .admin-panel-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .results-table thead {
+        display: none;
+      }
+      
+      .results-table tr {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #e0e6ed;
+      }
+      
+      .results-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        text-align: right;
+      }
+      
+      .results-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--primary-blue);
+        margin-right: auto;
+        padding-right: 15px;
+      }
+      
+      .results-table .subject-name {
+        text-align: right;
+      }
+      
+      .grade-scale-row {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      
+      .grade-box {
+        min-width: calc(33% - 6px);
+        padding: 6px 3px;
+      }
+      
+      .grade-letter {
+        font-size: 20px;
+      }
+      
+      .grade-range {
+        font-size: 10px;
+      }
+      
+      .empty {
+        display: none;
+      }
+      
+      .students-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .grade-box {
+        min-width: calc(50% - 6px);
+      }
+      
+      .admin-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    /* --- STYLES FOR WINNER/LOSER ANIMATION --- */
+    #winner-animation, #loser-animation {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: green;
+        flex-direction: column;
+        backdrop-filter: blur(5px);
+    }
+
+    .animation-content {
+        animation: zoomIn 0.5s ease-in-out;
+    }
+
+    .animation-content h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        margin-bottom: 1rem;
+    }
+
+    .animation-content p {
+        font-size: 1.2rem;
+    }
+    
+    .trophy {
+        font-size: 6rem;
+        animation: bounce 0.5s infinite;
+    }
+
+    .fail-icon {
+        font-size: 6rem;
+    }
+
+    @keyframes zoomIn {
+        from { transform: scale(0.5); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-20px);
+        }
+        60% {
+            transform: translateY(-10px);
+        }
+    }
+    /* --- END OF ANIMATION STYLES --- */
+  </style>
+</head>
+<body>
+  <!-- Welcome Header -->
+  <header class="welcome-header">
+    KUSOO DHAWOOW MAREEGTAN 
+    <div class="welcome-subtitle">Welcome to the Hagardid Exam Results Portal.</div>
+  </header>
+
+  <div class="container">
+    <!-- Modern Header Section -->
+    <div class="header-section">
+      <img src="https://i.ibb.co/Z6rp8Mm6/Hagardiid-School-Logo.jpg" "alt="tis School Logo" class="school-logo">
+      <h1 class="school-name">HAGARDIID PRIMARY AND SECONDARY SCHOOL</h1>
+      <h2 class="exam-title">NATIIJADA IMTIXAANKA KALKA KOOWAAD</h2>
+      <div class="academic-year">SANAD DUGSIYEEDKA 2025-2026</div>
+    </div>
+    
+    <!-- Professional Admin Section -->
+    <div class="admin-section">
+      <button class="admin-toggle" onclick="toggleAdminLogin()">
+        <i class="fas fa-lock"></i> Admin Login
+      </button>
+      
+      <div class="admin-login-form" id="adminLoginForm">
+        <div class="admin-input-group">
+          <label class="admin-label">USERNAME:</label>
+          <input type="text" class="admin-input" id="adminUsername" placeholder="Geli admin Username">
+        </div>
+        <div class="admin-input-group">
+          <label class="admin-label">PASSWORD:</label>
+          <input type="password" class="admin-input" id="adminPassword" placeholder="Geli admin Password">
+        </div>
+        <button class="admin-submit-btn" onclick="adminLogin()">
+          <i class="fas fa-sign-in-alt"></i> Hore-u-gal
+        </button>
+      </div>
+    </div>
+    
+    <!-- Professional Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+      <div class="admin-panel-header">
+        <h3 class="admin-panel-title">
+          <i class="fas fa-cogs"></i> Wajahada Hore 
+        </h3>
+        <button class="admin-logout-btn" onclick="adminLogout()">
+          <i class="fas fa-sign-out-alt"></i> Ka bax
+        </button>
+      </div>
+      
+      <div class="admin-controls">
+        <button class="admin-btn" onclick="manageStudents()">
+          <i class="fas fa-users"></i> Maareynta Ardeyda
+        </button>
+        <button class="admin-btn" onclick="addResults()">
+          <i class="fas fa-plus-circle"></i> Ku Dar Darajo
+        </button>
+        <button class="admin-btn" onclick="generateReports()">
+          <i class="fas fa-chart-bar"></i> Howlgali Warbixino
+        </button>
+        <button class="admin-btn" onclick="systemSettings()">
+          <i class="fas fa-cog"></i> Waaxda Farsamada
+        </button>
+      </div>
+      
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+          <div class="stat-value" id="totalStudents">0</div>
+          <div class="stat-label">Tirada Guud ee Ardeyda</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="stat-value" id="passedStudents">0</div>
+          <div class="stat-label">Ardeyda Gudubtay</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="stat-value" id="averageScore">0.0</div>
+          <div class="stat-label">Dhibcaha</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+          <div class="stat-value" id="passRate">0%</div>
+          <div class="stat-label">Heerka Gudbidda</div>
+        </div>
+      </div>
+      
+      <div class="admin-data-section">
+        <h4 class="data-section-title">
+          <i class="fas fa-table"></i> Xogta Ardeyda
+        </h4>
+        <div style="overflow-x: auto;">
+          <table class="students-table">
+            <thead>
+              <tr>
+                <th>TT</th>
+                <th>Magaca</th>
+                <th>Fasalka</th>
+                <th>Darajada</th>
+                <th>Go'aanka</th>
+                <th>Baadhid</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+              <!-- Students data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Registration Input Section -->
+    <div class="registration-section">
+      <label for="regInput" class="input-title">
+        <i class="fas fa-id-card"></i> Tira-taxaneha Ardeyga
+      </label>
+      <input 
+        type="text" 
+        id="regInput" 
+        class="input-field" 
+        placeholder="geli lambarkaaga tira-taxanaha (tusaale: 001)"
+        aria-label="Geli lambarkaaga tira-taxanaha"
+        pattern="[0-9]*" 
+        inputmode="numeric"
+      >
+      <button class="submit-btn" onclick="showResult()">
+        <i class="fas fa-search"></i> U Gudub Aragtida Natiijadaada
+      </button>
+    </div>
+
+    <div id="result" class="fade-in"></div>
+
+    <button class="print-button" onclick="window.print()" style="display:none;" id="printBtn">
+      <i class="fas fa-download"></i> Ladag Natiijada ama Daabac
+    </button>
+
+    <div class="signature">
+      <p><strong>👨‍🏫Mahad</strong></p>
+      <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/252618954465">OFFICE</a></p>
+      <p><i class="fas fa-envelope"></i> Email: <a href="mailto:hagardiidschool@gmail.com">hagardiidschool@gmail.com</p>
+      <p><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/profile.php?id=100063989441966">Booqo barta Facebook-ga Hagardiid</a></p>
+      <p><i class="fas fa-location-dot"></i> Degmada Wadajir</p>
+    </div>
+
+    <div class="footer">
+      <p>&copy; <strong>2025 | SULTAAN</p>
+      <p> <strong>All rights reserved.</p>
+      <p style="color: var(--secondary-blue); font-size: 14px; margin-top: 5px;">
+        Wixii cabasho ah oo ku saabsan natiijada Imtixaanka, fadlan la xidhiidh <a href="tel:+252618954465">📞+252618954465</a>
+      </p>
+      <p style="margin-top: 10px;">Printed on: <span id="printDate"></span></p>
+    </div>
+  </div>
+
+  <!-- Animation Overlays -->
+  <div id="winner-animation" style="display: none;">
+      <div class="animation-content">
+          <div class="trophy">🏆</div>
+          <h1>Hambalyo!</h1>
+          <p>Horumar Wacan!</p>
+      </div>
+  </div>
+
+  <div id="loser-animation" style="display: none;">
+      <div class="animation-content">
+          <div class="fail-icon">😞</div>
+          <h1>Waan Ka Xumahay!</h1>
+          <p></p>
+      </div>
+  </div>
+
+  <script>
+    // Admin credentials
+    const adminCredentials = {
+      username: "hagardiid",
+      password: "mahad"
+    };
+
+    let isAdminLoggedIn = false;
+
+    // Toggle admin login form
+    function toggleAdminLogin() {
+      const form = document.getElementById('adminLoginForm');
+      form.classList.toggle('show');
+    }
+
+    // Admin login function
+    function adminLogin() {
+      const username = document.getElementById('adminUsername').value;
+      const password = document.getElementById('adminPassword').value;
+      
+      if (username === adminCredentials.username && password === adminCredentials.password) {
+        isAdminLoggedIn = true;
+        document.getElementById('adminPanel').classList.add('show');
+        document.getElementById('adminLoginForm').classList.remove('show');
+        document.getElementById('adminUsername').value = '';
+        document.getElementById('adminPassword').value = '';
+        
+        // Update admin stats and data
+        updateAdminStats();
+        populateStudentsTable();
+        
+        // Show success message
+        alert('Si guul leh ayaad u soo gududbtay! Kusoo dhawoow dash-boodhka.');
+      } else {
+        alert('Waan ka xumahay hubi username-ka amaba password-ka! Fadlan markale ku celi!.');
+      }
+    }
+
+    // Admin logout function
+    function adminLogout() {
+      isAdminLoggedIn = false;
+      document.getElementById('adminPanel').classList.remove('show');
+      alert('Admin logged out successfully.');
+    }
+
+    // Update admin statistics
+    function updateAdminStats() {
+      const totalStudents = students.length;
+      const passedStudents = students.filter(s => {
+        const scores = Object.values(s.results);
+        // Convert to percentage for passing threshold
+        const score = scores[0]; // Only one subject
+        const percentage = (score / 40) * 100;
+        return percentage >= 50; // 50% or higher to pass
+      }).length;
+      
+      const averageScore = (students.reduce((acc, s) => {
+        const scores = Object.values(s.results);
+        const score = scores[0];
+        const percentage = (score / 40) * 100;
+        return acc + percentage;
+      }, 0) / students.length).toFixed(1);
+      
+      const passRate = ((passedStudents / totalStudents) * 100).toFixed(1);
+      
+      // Update stat cards
+      document.getElementById('totalStudents').textContent = totalStudents;
+      document.getElementById('passedStudents').textContent = passedStudents;
+      document.getElementById('averageScore').textContent = averageScore + '%';
+      document.getElementById('passRate').textContent = passRate + '%';
+    }
+
+    // Populate students table
+    function populateStudentsTable() {
+      const tableBody = document.getElementById('studentsTableBody');
+      tableBody.innerHTML = '';
+      
+      students.forEach(student => {
+        const scores = Object.values(student.results);
+        const score = scores[0];
+        const percentage = ((score / 40) * 100).toFixed(1);
+        
+        // Passing threshold: 50% or higher (which is 11+ points)
+        const status = percentage >= 50 ? 'Passed' : 'Failed';
+        const statusClass = percentage >= 50 ? 'status-passed' : 'status-failed';
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${student.regNo}</td>
+          <td>${student.name}</td>
+          <td>${student.class}</td>
+          <td>${score.toFixed(2)}</td>
+          <td><span class="status-badge ${statusClass}">${status}</span></td>
+          <td>
+            <button class="admin-btn" style="padding: 6px 12px; font-size: 12px;" onclick="viewStudent('${student.regNo}')">
+              <i class="fas fa-eye"></i> View
+            </button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // View student details
+    function viewStudent(regNo) {
+      const student = students.find(s => s.regNo === regNo);
+      if (student) {
+        document.getElementById('regInput').value = regNo;
+        showResult();
+        // Scroll to results
+        document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Admin functions
+    function manageStudents() {
+      if (!isAdminLoggedIn) {
+        alert('Please login as admin first.');
+        return;
+      }
+      alert('Student Management Panel - This would open a student management interface.');
+    }
+
+    function addResults() {
+      if (!isAdminLoggedIn) {
+        alert('Please login as admin first.');
+        return;
+      }
+      alert('Add Results Panel - This would open a results entry interface.');
+    }
+
+    function generateReports() {
+      if (!isAdminLoggedIn) {
+        alert('Please login as admin first.');
+        return;
+      }
+      alert('Report Generation Panel - This would generate various reports.');
+    }
+
+    function systemSettings() {
+      if (!isAdminLoggedIn) {
+        alert('Please login as admin first.');
+        return;
+      }
+      alert('System Settings Panel - This would open system configuration options.');
+    }
+
+    // Faallooyinka gaarka ah
+    const studentComments = {
+        "001": "Hambalyo! Waxaad ku guuleysatay inaad noqoto ardeyadda kaalinta 1aad kaga jidha fasalka iyo ardeyadda 1aad ee ugu sarreysa dhammaan natiijada ardeyda kale ee fasalka. 🎉 Horumar wanaagsan Maryama! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "002": "waxaad u baahan tahay inaad sii kobciso maadooyinka Bayoolijiga, Juqraafiga iyo kuwa luuqadaha.",
+        "0": "Hambalyo! Waxaad ku guuleysatay inaad noqoto ardeyga kaalinta 1aad kaga jidha fasalka iyo ardeyga 1aad ee ugu sarreysa dhammaan natiijada ardeyda kale ee fasalka. 🎉 Horumar wanaagsan Cabdillaahi! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "0": "Hambalyo! Waxaad muujisay karti iyo dedaal aad u wanaagsan. Waxaad ku guulaysatay inaad kaalinta 2aad u gasho fasalkaaga. Horumar wanaagsan Salma! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "0": "Hambalyo! Waxaad muujisay karti iyo dedaal aad u wanaagsan. Waxaad ku guulaysatay inaad kaalinta 2aad u gasho fasalkaaga. Horumar wanaagsan! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "0": "Hambalyo! Waxaad muujisay karti iyo dedaal aad u wanaagsan. Waxaad ku guulaysatay inaad kaalinta 3aad u gasho fasalkaaga. Horumar wanaagsan! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "0": "Hambalyo! Waxaad muujisay karti iyo dedaal aad u wanaagsan. Waxaad ku guulaysatay inaad kaalinta 4aad u gasho fasalkaaga. Horumar wanaagsan! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "0": "Hambalyo! Waxaad muujisay karti iyo dedaal aad u wanaagsan. Waxaad ku guulaysatay inaad kaalinta 4aad u gasho fasalkaaga. Horumar wanaagsan Haala! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "0": "Hambalyo! Waxaad muujisay karti iyo dedaal aad u wanaagsan. Waxaad ku guulaysatay inaad kaalinta 5aad u gasho fasalkaaga. Horumar wanaagsan Juweyriya (Jawaahir)! Rabitaankaaga nolosha Alle raxmadiisa ha kugu siiyo (Aamiin).🎉🎉",
+        "003": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "333": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "772": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "32": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "62": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "1136": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "365": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "83": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "124": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "1290": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "149": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "161": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "930": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "136": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "106": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "383": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "122": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "571": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "996": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "1073": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+        "1276": "Waan ka xumahay in aysan natiijadaada kuu muuqan, si aad natiijadaada u aragto fadlan iska xali xafiiska maaliyadda dugsiga.",
+    }; 
+    
+    const students = [
+      {
+        regNo: "001",
+        name: "Kowther Maxamed Aadam Sultaan",
+        motherName: "Hooyo Hani Cumar Maxamuud",
+        class: "0",
+        year: "2025-2026",
+        results: {
+          Xisaab: 22.00,
+    }
+  },
+  {
+    regNo: "1512939",
+    name: "Aways Cusmaan Cadan Suubiye",
+    motherName: "Shukri Calasow Maxamed",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 17,
+      SOOMAALI: 28,
+      ARABIC: 13,
+      MATH: 23,
+      ENGLISH: 23,
+      BIOLOGY: 17,
+      CHEMISTRY: 11,
+      PHYSICS: 16,
+      GEOGRAPHY: 24,
+      HISTORY: 22,
+      TECHNOLOGY: 22,
+      BUSINESS: 24
+    }
+  },
+  {
+    regNo: "1147884",
+    name: "Balqiiso Muuse Maxamed",
+    motherName: "Xaliimo Cali Xasan",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 11,
+      SOOMAALI: 33,
+      ARABIC: 11,
+      MATH: 30,
+      ENGLISH: 26,
+      BIOLOGY: 14,
+      CHEMISTRY: 15,
+      PHYSICS: 16,
+      GEOGRAPHY: 31,
+      HISTORY: 21,
+      TECHNOLOGY: 25,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1613644",
+    name: "C/qaadir Cabdi Cumar Kulmiye",
+    motherName: "Madiino Xasan Macow",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 12,
+      SOOMAALI: 37,
+      ARABIC: 3,
+      MATH: 38,
+      ENGLISH: 25,
+      BIOLOGY: 15,
+      CHEMISTRY: 37,
+      PHYSICS: 29,
+      GEOGRAPHY: 6,
+      HISTORY: 30,
+      TECHNOLOGY: 28,
+      BUSINESS: 31
+    }
+  },
+  {
+    regNo: "1613635",
+    name: "Cali Cabdulahi Maxamuud",
+    motherName: "Seynab Maxamuud Maxamad",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 15,
+      SOOMAALI: 25,
+      ARABIC: 3,
+      MATH: 20,
+      ENGLISH: 16,
+      BIOLOGY: 7,
+      CHEMISTRY: 2,
+      PHYSICS: 6,
+      GEOGRAPHY: 27,
+      HISTORY: 20,
+      TECHNOLOGY: 26,
+      BUSINESS: 17
+    }
+  },
+  {
+    regNo: "1147812",
+    name: "Cumar Muxudiin Xuseen Afrax",
+    motherName: "Seynab Xuseen Geeddi",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 9,
+      SOOMAALI: 25,
+      ARABIC: 1,
+      MATH: 29,
+      ENGLISH: 25,
+      BIOLOGY: 6,
+      CHEMISTRY: 12,
+      PHYSICS: 18,
+      GEOGRAPHY: 23,
+      HISTORY: 13,
+      TECHNOLOGY: 25,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1613673",
+    name: "Deeqo Maxamed Nuur Gacal",
+    motherName: "Raxmo Adan Cabdulle",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 26,
+      SOOMAALI: 32,
+      ARABIC: 17,
+      MATH: 25,
+      ENGLISH: 24,
+      BIOLOGY: 20,
+      CHEMISTRY: 10,
+      PHYSICS: 18,
+      GEOGRAPHY: 29,
+      HISTORY: 31,
+      TECHNOLOGY: 23,
+      BUSINESS: 32
+    }
+  },
+  {
+    regNo: "1148070",
+    name: "Fardowsa Da Uud Maxamuud",
+    motherName: "Qaali Axmad Xuseen",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 35,
+      SOOMAALI: 34,
+      ARABIC: 22,
+      MATH: 30,
+      ENGLISH: 29,
+      BIOLOGY: 34,
+      CHEMISTRY: 32,
+      PHYSICS: 27,
+      GEOGRAPHY: 34,
+      HISTORY: 37,
+      TECHNOLOGY: 28,
+      BUSINESS: 31
+    }
+  },
+  {
+    regNo: "1521709",
+    name: "Farxiyo Xasan Maxamud Qasim",
+    motherName: "Xabibo Maxamuud Aadan",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 14,
+      SOOMAALI: 33,
+      ARABIC: 11,
+      MATH: 32,
+      ENGLISH: 26,
+      BIOLOGY: 15,
+      CHEMISTRY: 15,
+      PHYSICS: 20,
+      GEOGRAPHY: 31,
+      HISTORY: 18,
+      TECHNOLOGY: 27,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1147682",
+    name: "Ismaaciil Cabdi Cumar Calasow",
+    motherName: "Luuleey Muuse Cumar",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 16,
+      SOOMAALI: 34,
+      ARABIC: 0,
+      MATH: 12,
+      ENGLISH: 26,
+      BIOLOGY: 23,
+      CHEMISTRY: 18,
+      PHYSICS: 11,
+      GEOGRAPHY: 26,
+      HISTORY: 29,
+      TECHNOLOGY: 27,
+      BUSINESS: 22
+    }
+  },
+  {
+    regNo: "1512910",
+    name: "Liibaan Cali Axmed Maxamed",
+    motherName: "Madiino Gojodax Cali",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 21,
+      SOOMAALI: 33,
+      ARABIC: 15,
+      MATH: 34,
+      ENGLISH: 31,
+      BIOLOGY: 38,
+      CHEMISTRY: 22,
+      PHYSICS: 17,
+      GEOGRAPHY: 33,
+      HISTORY: 28,
+      TECHNOLOGY: 28,
+      BUSINESS: 28
+    }
+  },
+  {
+    regNo: "1613677",
+    name: "Maxamed Daahir Maxamuud",
+    motherName: "Maryan Cusmaan Cali",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 26,
+      SOOMAALI: 28,
+      ARABIC: 16,
+      MATH: 31,
+      ENGLISH: 24,
+      BIOLOGY: 7,
+      CHEMISTRY: 10,
+      PHYSICS: 11,
+      GEOGRAPHY: 32,
+      HISTORY: 24,
+      TECHNOLOGY: 22,
+      BUSINESS: 27
+    }
+  },
+  {
+    regNo: "1404870",
+    name: "Maxamed Iidow Xasan Maxamed",
+    motherName: "Aamino Axmed Yabar",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 23,
+      SOOMAALI: 35,
+      ARABIC: 14,
+      MATH: 15,
+      ENGLISH: 27,
+      BIOLOGY: 33,
+      CHEMISTRY: 9,
+      PHYSICS: 13,
+      GEOGRAPHY: 23,
+      HISTORY: 24,
+      TECHNOLOGY: 26,
+      BUSINESS: 27
+    }
+  },
+  {
+    regNo: "1371095",
+    name: "Saabir Maxamed Shire",
+    motherName: "Samsam Maxamad Cusmaan",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 16,
+      SOOMAALI: 32,
+      ARABIC: 10,
+      MATH: 23,
+      ENGLISH: 28,
+      BIOLOGY: 11,
+      CHEMISTRY: 10,
+      PHYSICS: 13,
+      GEOGRAPHY: 33,
+      HISTORY: 33,
+      TECHNOLOGY: 23,
+      BUSINESS: 24
+    }
+  },
+  {
+    regNo: "1521728",
+    name: "Sahro Abuukar Xuseen Xasan",
+    motherName: "Asmo Xaaji Xasan",
+    class: "Form 4",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 12,
+      SOOMAALI: 23,
+      ARABIC: 13,
+      MATH: 25,
+      ENGLISH: 27,
+      BIOLOGY: 0,
+      CHEMISTRY: 9,
+      PHYSICS: 18,
+      GEOGRAPHY: 33,
+      HISTORY: 29,
+      TECHNOLOGY: 23,
+      BUSINESS: 26
+    }
+  },
+  
+  // Form 3
+  {
+    regNo: "1664372",
+    name: "Asli Cusmaan Caddaan",
+    motherName: "Shukri Calasow Maxamed",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 21,
+      SOOMAALI: 26,
+      ARABIC: 35,
+      MATH: 30,
+      ENGLISH: 38,
+      BIOLOGY: 23,
+      CHEMISTRY: 28,
+      PHYSICS: 25,
+      GEOGRAPHY: 40,
+      HISTORY: 38,
+      TECHNOLOGY: 9,
+      BUSINESS: 22
+    }
+  },
+  {
+    regNo: "1147562",
+    name: "Cabdiqadar Maxamad Xuseen",
+    motherName: "Sirad Xasan Faroole",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 2,
+      SOOMAALI: 31,
+      ARABIC: 25,
+      MATH: 24,
+      ENGLISH: 17,
+      BIOLOGY: 21,
+      CHEMISTRY: 13,
+      PHYSICS: 38,
+      GEOGRAPHY: 36,
+      HISTORY: 35,
+      TECHNOLOGY: 21,
+      BUSINESS: 18
+    }
+  },
+  {
+    regNo: "1521804",
+    name: "Cabdiraxman Cali Xasan",
+    motherName: "Faadumo Xaashi Axmed",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 12,
+      SOOMAALI: 31,
+      ARABIC: 23,
+      MATH: 27,
+      ENGLISH: 32,
+      BIOLOGY: 27,
+      CHEMISTRY: 26,
+      PHYSICS: 35,
+      GEOGRAPHY: 40,
+      HISTORY: 39,
+      TECHNOLOGY: 28,
+      BUSINESS: 25
+    }
+  },
+  {
+    regNo: "1540001",
+    name: "Cabdirisaq Maxamad Cumar Cibar",
+    motherName: "Maryan Macalin Daauud",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 31,
+      SOOMAALI: 15,
+      ARABIC: 21,
+      MATH: 14,
+      ENGLISH: 24,
+      BIOLOGY: 29,
+      CHEMISTRY: 25,
+      PHYSICS: 20,
+      GEOGRAPHY: 27,
+      HISTORY: 23,
+      TECHNOLOGY: 24,
+      BUSINESS: 19
+    }
+  },
+  {
+    regNo: "1664403",
+    name: "Cabdirisaaq Muxudiin Xuseen",
+    motherName: "Seynab Xuseen Geedi",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 15,
+      SOOMAALI: 22,
+      ARABIC: 26,
+      MATH: 17,
+      ENGLISH: 28,
+      BIOLOGY: 21,
+      CHEMISTRY: 16,
+      PHYSICS: 32,
+      GEOGRAPHY: 40,
+      HISTORY: 34,
+      TECHNOLOGY: 25,
+      BUSINESS: 25
+    }
+  },
+  {
+    regNo: "1613663",
+    name: "Cabdullaahi Xasan Abuukar",
+    motherName: "Suule Cabdiraxman Cabdi",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 5,
+      SOOMAALI: 0,
+      ARABIC: 0,
+      MATH: 0,
+      ENGLISH: 0,
+      BIOLOGY: 0,
+      CHEMISTRY: 0,
+      PHYSICS: 0,
+      GEOGRAPHY: 0,
+      HISTORY: 0,
+      TECHNOLOGY: 0,
+      BUSINESS: 0
+    }
+  },
+  {
+    regNo: "2629638",
+    name: "Cabdulqaadir Faarax Taakow",
+    motherName: "Zeynab Nuur Maxamad",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 19,
+      SOOMAALI: 24,
+      ARABIC: 20,
+      MATH: 16,
+      ENGLISH: 8,
+      BIOLOGY: 30,
+      CHEMISTRY: 8,
+      PHYSICS: 10,
+      GEOGRAPHY: 34,
+      HISTORY: 9,
+      TECHNOLOGY: 16,
+      BUSINESS: 4
+    }
+  },
+  {
+    regNo: "1521777",
+    name: "Cabdulqaadir Maxamad Shire",
+    motherName: "Zamzam Maxamad Cismaan",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 21,
+      SOOMAALI: 24,
+      ARABIC: 27,
+      MATH: 10,
+      ENGLISH: 2,
+      BIOLOGY: 21,
+      CHEMISTRY: 4,
+      PHYSICS: 0,
+      GEOGRAPHY: 30,
+      HISTORY: 5,
+      TECHNOLOGY: 16,
+      BUSINESS: 2
+    }
+  },
+  {
+    regNo: "1613853",
+    name: "Cali Maxamuud Cabdulle",
+    motherName: "Xawo Xasan Maxamed",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 5,
+      SOOMAALI: 37,
+      ARABIC: 29,
+      MATH: 5,
+      ENGLISH: 13,
+      BIOLOGY: 23,
+      CHEMISTRY: 17,
+      PHYSICS: 34,
+      GEOGRAPHY: 36,
+      HISTORY: 38,
+      TECHNOLOGY: 16,
+      BUSINESS: 12
+    }
+  },
+  {
+    regNo: "2629675",
+    name: "Fartuun Muxudiin Cali",
+    motherName: "Xakiimo Jimcaale Jilacow",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 27,
+      SOOMAALI: 32,
+      ARABIC: 33,
+      MATH: 15,
+      ENGLISH: 31,
+      BIOLOGY: 28,
+      CHEMISTRY: 18,
+      PHYSICS: 25,
+      GEOGRAPHY: 40,
+      HISTORY: 37,
+      TECHNOLOGY: 27,
+      BUSINESS: 28
+    }
+  },
+  {
+    regNo: "1147993",
+    name: "Kifaayo Cali Xasan",
+    motherName: "Ubax Cabdulqaadir Cabdulle",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 16,
+      SOOMAALI: 21,
+      ARABIC: 23,
+      MATH: 22,
+      ENGLISH: 29,
+      BIOLOGY: 33,
+      CHEMISTRY: 37,
+      PHYSICS: 23,
+      GEOGRAPHY: 39,
+      HISTORY: 36,
+      TECHNOLOGY: 31,
+      BUSINESS: 8
+    }
+  },
+  {
+    regNo: "1664359",
+    name: "Nasro Xuseen Axmad",
+    motherName: "Aamino Caddan Suubiye",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 22,
+      SOOMAALI: 39,
+      ARABIC: 37,
+      MATH: 19,
+      ENGLISH: 34,
+      BIOLOGY: 32,
+      CHEMISTRY: 28,
+      PHYSICS: 33,
+      GEOGRAPHY: 40,
+      HISTORY: 35,
+      TECHNOLOGY: 23,
+      BUSINESS: 28
+    }
+  },
+  {
+    regNo: "1371172",
+    name: "Qadro Muuse Maxamad",
+    motherName: "Sacdiyo Xuseen Cali",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 23,
+      SOOMAALI: 24,
+      ARABIC: 25,
+      MATH: 15,
+      ENGLISH: 34,
+      BIOLOGY: 23,
+      CHEMISTRY: 37,
+      PHYSICS: 33,
+      GEOGRAPHY: 40,
+      HISTORY: 36,
+      TECHNOLOGY: 34,
+      BUSINESS: 13
+    }
+  },
+  {
+    regNo: "2629846",
+    name: "Saabiriin Abuukar Jeylaani",
+    motherName: "Raxmo Aadan Cabdulle",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 20,
+      SOOMAALI: 25,
+      ARABIC: 31,
+      MATH: 19,
+      ENGLISH: 29,
+      BIOLOGY: 25,
+      CHEMISTRY: 17,
+      PHYSICS: 35,
+      GEOGRAPHY: 35,
+      HISTORY: 36,
+      TECHNOLOGY: 18,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1521883",
+    name: "Sacdiyo Cumar Cabdulle",
+    motherName: "Caasho Axmad Afrax",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 22,
+      SOOMAALI: 25,
+      ARABIC: 27,
+      MATH: 15,
+      ENGLISH: 36,
+      BIOLOGY: 20,
+      CHEMISTRY: 36,
+      PHYSICS: 35,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 38,
+      BUSINESS: 11
+    }
+  },
+  {
+    regNo: "1521840",
+    name: "Xasan Cali Xasan",
+    motherName: "Ubax Cabdiqaadir Cabdulle",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 20,
+      SOOMAALI: 13,
+      ARABIC: 21,
+      MATH: 13,
+      ENGLISH: 26,
+      BIOLOGY: 22,
+      CHEMISTRY: 25,
+      PHYSICS: 13,
+      GEOGRAPHY: 21,
+      HISTORY: 31,
+      TECHNOLOGY: 21,
+      BUSINESS: 11
+    }
+  },
+  {
+    regNo: "1521721",
+    name: "Saynab Abuukar Xuseen",
+    motherName: "Asmo Sheikh Xasan",
+    class: "Form 3",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 21,
+      SOOMAALI: 32,
+      ARABIC: 30,
+      MATH: 18,
+      ENGLISH: 23,
+      BIOLOGY: 33,
+      CHEMISTRY: 35,
+      PHYSICS: 36,
+      GEOGRAPHY: 40,
+      HISTORY: 25,
+      TECHNOLOGY: 38,
+      BUSINESS: 22
+    }
+  },
+
+  // Form 2
+  {
+    regNo: "1613882",
+    name: "Abdi Cabdulahi Maxamuud Cumar",
+    motherName: "Farxiyo Cumar Mire",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 29,
+      SOOMAALI: 37,
+      ARABIC: 37,
+      MATH: 0,
+      ENGLISH: 28,
+      BIOLOGY: 28,
+      CHEMISTRY: 36,
+      PHYSICS: 34,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 28,
+      BUSINESS: 30
+    }
+  },
+  {
+    regNo: "1540007",
+    name: "Abuubakar Maxamad Cumar Cibaar",
+    motherName: "Maryan Maxamed Daud",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 10,
+      SOOMAALI: 29,
+      ARABIC: 22,
+      MATH: 2,
+      ENGLISH: 18,
+      BIOLOGY: 20,
+      CHEMISTRY: 33,
+      PHYSICS: 22,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 16,
+      BUSINESS: 16
+    }
+  },
+  {
+    regNo: "2630422",
+    name: "Axmed Maxamed Cumar Axmed",
+    motherName: "Zaynab Axmed Jilicow",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 10,
+      SOOMAALI: 17,
+      ARABIC: 24,
+      MATH: 34,
+      ENGLISH: 18,
+      BIOLOGY: 32,
+      CHEMISTRY: 25,
+      PHYSICS: 33,
+      GEOGRAPHY: 38,
+      HISTORY: 38,
+      TECHNOLOGY: 22,
+      BUSINESS: 23
+    }
+  },
+  {
+    regNo: "1614019",
+    name: "C/kariin C/qaadir Ibrahim Xasan",
+    motherName: "Caasho Xuseen Aaxmad",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 30,
+      SOOMAALI: 33,
+      ARABIC: 25,
+      MATH: 32,
+      ENGLISH: 22,
+      BIOLOGY: 22,
+      CHEMISTRY: 20,
+      PHYSICS: 31,
+      GEOGRAPHY: 39,
+      HISTORY: 39,
+      TECHNOLOGY: 19,
+      BUSINESS: 27
+    }
+  },
+  {
+    regNo: "2848324",
+    name: "C/kiriin Abshir Xasan Maxamed",
+    motherName: "Dahabo Bashiir Xasan",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 8,
+      SOOMAALI: 31,
+      ARABIC: 29,
+      MATH: 2,
+      ENGLISH: 14,
+      BIOLOGY: 20,
+      CHEMISTRY: 31,
+      PHYSICS: 20,
+      GEOGRAPHY: 38,
+      HISTORY: 38,
+      TECHNOLOGY: 16,
+      BUSINESS: 13
+    }
+  },
+  {
+    regNo: "2635211",
+    name: "C/lahi Cabdi Axmed Cali",
+    motherName: "Aamino Xuseen Cali",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 7,
+      SOOMAALI: 34,
+      ARABIC: 25,
+      MATH: 9,
+      ENGLISH: 32,
+      BIOLOGY: 25,
+      CHEMISTRY: 27,
+      PHYSICS: 26,
+      GEOGRAPHY: 37,
+      HISTORY: 37,
+      TECHNOLOGY: 29,
+      BUSINESS: 32
+    }
+  },
+  {
+    regNo: "1337929",
+    name: "C/nuur Ibrahim Maxamed Ibrahim",
+    motherName: "Xaawo Cabdullahi Maxamad",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 27,
+      SOOMAALI: 38,
+      ARABIC: 40,
+      MATH: 5,
+      ENGLISH: 26,
+      BIOLOGY: 23,
+      CHEMISTRY: 28,
+      PHYSICS: 27,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 30,
+      BUSINESS: 25
+    }
+  },
+  {
+    regNo: "2630565",
+    name: "Cabdiraxmaan Maxamed Cusobow Nuur",
+    motherName: "Mako Maxamuud Shire",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 33,
+      SOOMAALI: 37,
+      ARABIC: 40,
+      MATH: 0,
+      ENGLISH: 27,
+      BIOLOGY: 29,
+      CHEMISTRY: 26,
+      PHYSICS: 21,
+      GEOGRAPHY: 33,
+      HISTORY: 33,
+      TECHNOLOGY: 29,
+      BUSINESS: 25
+    }
+  },
+  {
+    regNo: "2630381",
+    name: "C/salaam Saciid Muxudiin Cadaw",
+    motherName: "Siciido Maxamed Cal",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 11,
+      SOOMAALI: 31,
+      ARABIC: 36,
+      MATH: 6,
+      ENGLISH: 29,
+      BIOLOGY: 29,
+      CHEMISTRY: 25,
+      PHYSICS: 33,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 27,
+      BUSINESS: 29
+    }
+  },
+  {
+    regNo: "2632091",
+    name: "Cali Xasan Axmed Ibrahim",
+    motherName: "Xaliimo Gacal Maxamuud",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 37,
+      SOOMAALI: 37,
+      ARABIC: 39,
+      MATH: 29,
+      ENGLISH: 15,
+      BIOLOGY: 27,
+      CHEMISTRY: 28,
+      PHYSICS: 25,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 19,
+      BUSINESS: 15
+    }
+  },
+  {
+    regNo: "2632004",
+    name: "Ceydaruus C/raxmaan Maxamed Cali",
+    motherName: "Cayni Aadan Axmed",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 14,
+      SOOMAALI: 19,
+      ARABIC: 30,
+      MATH: 28,
+      ENGLISH: 22,
+      BIOLOGY: 28,
+      CHEMISTRY: 27,
+      PHYSICS: 34,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 26,
+      BUSINESS: 33
+    }
+  },
+  {
+    regNo: "1484474",
+    name: "Dahabo Ibrahim Maxamed Cabdale",
+    motherName: "Xaawo Cabdullahi Maxamad",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 20,
+      SOOMAALI: 37,
+      ARABIC: 40,
+      MATH: 10,
+      ENGLISH: 27,
+      BIOLOGY: 33,
+      CHEMISTRY: 26,
+      PHYSICS: 27,
+      GEOGRAPHY: 35,
+      HISTORY: 35,
+      TECHNOLOGY: 27,
+      BUSINESS: 20
+    }
+  },
+  {
+    regNo: "1614171",
+    name: "Deeqo Xasan Calianis C/dule",
+    motherName: "Madiino Maxamad Maxamuud",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 17,
+      SOOMAALI: 35,
+      ARABIC: 35,
+      MATH: 35,
+      ENGLISH: 24,
+      BIOLOGY: 30,
+      CHEMISTRY: 30,
+      PHYSICS: 38,
+      GEOGRAPHY: 37,
+      HISTORY: 37,
+      TECHNOLOGY: 27,
+      BUSINESS: 0
+    }
+  },
+  {
+    regNo: "1614146",
+    name: "Hibo Maxamed C/alhi Cumar Yuusuf",
+    motherName: "Leylo Xasan Abuukar",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 33,
+      SOOMAALI: 37,
+      ARABIC: 36,
+      MATH: 35,
+      ENGLISH: 24,
+      BIOLOGY: 37,
+      CHEMISTRY: 39,
+      PHYSICS: 38,
+      GEOGRAPHY: 39,
+      HISTORY: 39,
+      TECHNOLOGY: 23,
+      BUSINESS: 35
+    }
+  },
+  {
+    regNo: "2629964",
+    name: "Khalid Xasan Cali Cadan",
+    motherName: "Aamino Xasan Hadaafow",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 8,
+      SOOMAALI: 36,
+      ARABIC: 31,
+      MATH: 40,
+      ENGLISH: 28,
+      BIOLOGY: 5,
+      CHEMISTRY: 29,
+      PHYSICS: 28,
+      GEOGRAPHY: 39,
+      HISTORY: 39,
+      TECHNOLOGY: 23,
+      BUSINESS: 24
+    }
+  },
+  {
+    regNo: "1652079",
+    name: "Mahad Bare Nuur Cali Cadaw",
+    motherName: "Nuuro Jimcaale Cumar",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 24,
+      SOOMAALI: 35,
+      ARABIC: 39,
+      MATH: 27,
+      ENGLISH: 22,
+      BIOLOGY: 24,
+      CHEMISTRY: 24,
+      PHYSICS: 29,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 15,
+      BUSINESS: 20
+    }
+  },
+  {
+    regNo: "2630655",
+    name: "Maxamed Cabdi Maxamed Maxamuud",
+    motherName: "Faay Axamed Maxamuud",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 17,
+      SOOMAALI: 37,
+      ARABIC: 30,
+      MATH: 10,
+      ENGLISH: 22,
+      BIOLOGY: 37,
+      CHEMISTRY: 16,
+      PHYSICS: 23,
+      GEOGRAPHY: 34,
+      HISTORY: 34,
+      TECHNOLOGY: 21,
+      BUSINESS: 27
+    }
+  },
+  {
+    regNo: "1664319",
+    name: "Naciimo Muuse Maxamed Rooble Raage",
+    motherName: "Sacdiyo Axmed Caroone",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 35,
+      SOOMAALI: 37,
+      ARABIC: 33,
+      MATH: 37,
+      ENGLISH: 26,
+      BIOLOGY: 39,
+      CHEMISTRY: 39,
+      PHYSICS: 38,
+      GEOGRAPHY: 39,
+      HISTORY: 39,
+      TECHNOLOGY: 23,
+      BUSINESS: 36
+    }
+  },
+  {
+    regNo: "1614033",
+    name: "Qadiijo Awees Maxamed Xasan",
+    motherName: "Faadumo Xasan Maxamad",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 14,
+      SOOMAALI: 36,
+      ARABIC: 35,
+      MATH: 12,
+      ENGLISH: 26,
+      BIOLOGY: 15,
+      CHEMISTRY: 26,
+      PHYSICS: 27,
+      GEOGRAPHY: 31,
+      HISTORY: 31,
+      TECHNOLOGY: 30,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1614038",
+    name: "Rowdo Aways Ibrahim Cali Bare",
+    motherName: "Sahro Cali Cabdi",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 12,
+      SOOMAALI: 36,
+      ARABIC: 34,
+      MATH: 34,
+      ENGLISH: 4,
+      BIOLOGY: 28,
+      CHEMISTRY: 27,
+      PHYSICS: 35,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 36,
+      BUSINESS: 33
+    }
+  },
+  {
+    regNo: "2629906",
+    name: "Safiyo Saciid Muxudiin Cadaw",
+    motherName: "Siciido Maxamad Cali",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 37,
+      SOOMAALI: 38,
+      ARABIC: 36,
+      MATH: 20,
+      ENGLISH: 30,
+      BIOLOGY: 33,
+      CHEMISTRY: 33,
+      PHYSICS: 30,
+      GEOGRAPHY: 38,
+      HISTORY: 38,
+      TECHNOLOGY: 26,
+      BUSINESS: 23
+    }
+  },
+  {
+    regNo: "1614139",
+    name: "Sumayo Farxaan Xuseen Hilowle",
+    motherName: "Istar Shuceyb Maxamuud",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 18,
+      SOOMAALI: 34,
+      ARABIC: 36,
+      MATH: 27,
+      ENGLISH: 28,
+      BIOLOGY: 26,
+      CHEMISTRY: 27,
+      PHYSICS: 27,
+      GEOGRAPHY: 31,
+      HISTORY: 31,
+      TECHNOLOGY: 24,
+      BUSINESS: 24
+    }
+  },
+  {
+    regNo: "1613881",
+    name: "Suudi Cabdi Axmed Ibrahim",
+    motherName: "Shariifo Muuke Cumar",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 29,
+      SOOMAALI: 35,
+      ARABIC: 40,
+      MATH: 10,
+      ENGLISH: 29,
+      BIOLOGY: 29,
+      CHEMISTRY: 33,
+      PHYSICS: 25,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 31,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "2631868",
+    name: "Xasan C/lahi Nuur Mataan",
+    motherName: "Faadumo Xasan Saneey",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 33,
+      SOOMAALI: 37,
+      ARABIC: 40,
+      MATH: 10,
+      ENGLISH: 28,
+      BIOLOGY: 37,
+      CHEMISTRY: 32,
+      PHYSICS: 34,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 31,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "2848322",
+    name: "Xasan Maxamed Xasan Maxamuud",
+    motherName: "Shariifo Maxamuud Axmad",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 9,
+      SOOMAALI: 33,
+      ARABIC: 28,
+      MATH: 3,
+      ENGLISH: 30,
+      BIOLOGY: 21,
+      CHEMISTRY: 36,
+      PHYSICS: 25,
+      GEOGRAPHY: 35,
+      HISTORY: 35,
+      TECHNOLOGY: 18,
+      BUSINESS: 19
+    }
+  },
+  {
+    regNo: "2629921",
+    name: "Zamzam Axmed Cumar Cadaw",
+    motherName: "Maryan Cabdullaahi Xuseen",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 36,
+      SOOMAALI: 38,
+      ARABIC: 37,
+      MATH: 38,
+      ENGLISH: 32,
+      BIOLOGY: 32,
+      CHEMISTRY: 33,
+      PHYSICS: 35,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 36,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1455251",
+    name: "Fardowso Xasan Yaxye",
+    motherName: "Faadumo Daauud Cali",
+    class: "Form 2",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 38,
+      SOOMAALI: 39,
+      ARABIC: 24,
+      MATH: 29,
+      ENGLISH: 34,
+      BIOLOGY: 40,
+      CHEMISTRY: 38,
+      PHYSICS: 40,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 31,
+      BUSINESS: 37
+    }
+  },
+
+  // Form 1
+  {
+    regNo: "2870920",
+    name: "Abuukar Careys Daa Ud",
+    motherName: "Deeqo Ibraahim Muxumad",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 10,
+      SOOMAALI: 31,
+      ARABIC: 35,
+      MATH: 18,
+      ENGLISH: 26,
+      BIOLOGY: 22,
+      CHEMISTRY: 17,
+      PHYSICS: 24,
+      GEOGRAPHY: 34,
+      HISTORY: 40,
+      TECHNOLOGY: 19,
+      BUSINESS: 23
+    }
+  },
+  {
+    regNo: "2631817",
+    name: "Axmed C/lahi Axmed",
+    motherName: "Saciido Cabdi Xasan",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 19,
+      SOOMAALI: 27,
+      ARABIC: 27,
+      MATH: 20,
+      ENGLISH: 27,
+      BIOLOGY: 19,
+      CHEMISTRY: 35,
+      PHYSICS: 39,
+      GEOGRAPHY: 36,
+      HISTORY: 39,
+      TECHNOLOGY: 22,
+      BUSINESS: 32
+    }
+  },
+  {
+    regNo: "2629710",
+    name: "C/lahi Saciid Maxamuud",
+    motherName: "Naleey Xasan Jaawiye",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 10,
+      SOOMAALI: 27,
+      ARABIC: 21,
+      MATH: 15,
+      ENGLISH: 19,
+      BIOLOGY: 21,
+      CHEMISTRY: 19,
+      PHYSICS: 17,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 18,
+      BUSINESS: 11
+    }
+  },
+  {
+    regNo: "2631602",
+    name: "C/raxmaan Axmed Maxamed",
+    motherName: "Seynab Calii Nuur",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 28,
+      SOOMAALI: 33,
+      ARABIC: 37,
+      MATH: 35,
+      ENGLISH: 36,
+      BIOLOGY: 35,
+      CHEMISTRY: 37,
+      PHYSICS: 32,
+      GEOGRAPHY: 38,
+      HISTORY: 10,
+      TECHNOLOGY: 22,
+      BUSINESS: 35
+    }
+  },
+  {
+    regNo: "2673888",
+    name: "C/xakiin Xasan Axmed",
+    motherName: "Xaliimo Gacal Maxamud",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 6,
+      SOOMAALI: 13,
+      ARABIC: 29,
+      MATH: 16,
+      ENGLISH: 28,
+      BIOLOGY: 28,
+      CHEMISTRY: 20,
+      PHYSICS: 15,
+      GEOGRAPHY: 36,
+      HISTORY: 30,
+      TECHNOLOGY: 21,
+      BUSINESS: 22
+    }
+  },
+  {
+    regNo: "2629838",
+    name: "Cabaas C.lahi Muxudiin",
+    motherName: "Xalimo Cumar Maxamuud",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 9,
+      SOOMAALI: 30,
+      ARABIC: 30,
+      MATH: 14,
+      ENGLISH: 31,
+      BIOLOGY: 21,
+      CHEMISTRY: 9,
+      PHYSICS: 32,
+      GEOGRAPHY: 34,
+      HISTORY: 39,
+      TECHNOLOGY: 23,
+      BUSINESS: 13
+    }
+  },
+  {
+    regNo: "2631803",
+    name: "Daahir Cabdi Xuseen Cali",
+    motherName: "Ruqiyo Xasan Calasow",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 13,
+      SOOMAALI: 32,
+      ARABIC: 40,
+      MATH: 9,
+      ENGLISH: 36,
+      BIOLOGY: 35,
+      CHEMISTRY: 37,
+      PHYSICS: 30,
+      GEOGRAPHY: 38,
+      HISTORY: 40,
+      TECHNOLOGY: 29,
+      BUSINESS: 33
+    }
+  },
+  {
+    regNo: "2631803",
+    name: "Daahir Clahi Cali",
+    motherName: "Ruqiyo Xasan Calasow",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 8,
+      SOOMAALI: 30,
+      ARABIC: 19,
+      MATH: 14,
+      ENGLISH: 24,
+      BIOLOGY: 22,
+      CHEMISTRY: 19,
+      PHYSICS: 29,
+      GEOGRAPHY: 34,
+      HISTORY: 35,
+      TECHNOLOGY: 16,
+      BUSINESS: 8
+    }
+  },
+  {
+    regNo: "2631356",
+    name: "Deeqo Sabriye Axmed",
+    motherName: "Aasiyo Cumar Cabdulle",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 32,
+      SOOMAALI: 34,
+      ARABIC: 39,
+      MATH: 30,
+      ENGLISH: 35,
+      BIOLOGY: 30,
+      CHEMISTRY: 38,
+      PHYSICS: 38,
+      GEOGRAPHY: 40,
+      HISTORY: 40,
+      TECHNOLOGY: 19,
+      BUSINESS: 19
+    }
+  },
+  {
+    regNo: "2631011",
+    name: "Faadumo C/raxmaan Cabdi",
+    motherName: "Muno Yuusuf Maxamed",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 28,
+      SOOMAALI: 32,
+      ARABIC: 40,
+      MATH: 35,
+      ENGLISH: 40,
+      BIOLOGY: 39,
+      CHEMISTRY: 38,
+      PHYSICS: 40,
+      GEOGRAPHY: 40,
+      HISTORY: 39,
+      TECHNOLOGY: 31,
+      BUSINESS: 37
+    }
+  },
+  {
+    regNo: "3069502",
+    name: "Hodan Cali Muxudiin Xasan",
+    motherName: "Safiyo Axmad Maxamad",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 8,
+      SOOMAALI: 28,
+      ARABIC: 36,
+      MATH: 21,
+      ENGLISH: 32,
+      BIOLOGY: 35,
+      CHEMISTRY: 31,
+      PHYSICS: 30,
+      GEOGRAPHY: 38,
+      HISTORY: 40,
+      TECHNOLOGY: 27,
+      BUSINESS: 20
+    }
+  },
+  {
+    regNo: "2631317",
+    name: "Istar Cali Axmed",
+    motherName: "Madiino Jooodax Cali",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 7,
+      SOOMAALI: 34,
+      ARABIC: 37,
+      MATH: 21,
+      ENGLISH: 28,
+      BIOLOGY: 23,
+      CHEMISTRY: 30,
+      PHYSICS: 34,
+      GEOGRAPHY: 36,
+      HISTORY: 34,
+      TECHNOLOGY: 26,
+      BUSINESS: 25
+    }
+  },
+  {
+    regNo: "1484572",
+    name: "Liibaan Aways Maxamed",
+    motherName: "Fadumo Xasan Maxamed",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 6,
+      SOOMAALI: 25,
+      ARABIC: 21,
+      MATH: 18,
+      ENGLISH: 17,
+      BIOLOGY: 23,
+      CHEMISTRY: 23,
+      PHYSICS: 22,
+      GEOGRAPHY: 36,
+      HISTORY: 36,
+      TECHNOLOGY: 15,
+      BUSINESS: 13
+    }
+  },
+  {
+    regNo: "1615071",
+    name: "Maido Barre Nuur Cali",
+    motherName: "Nuuro Jimcaale Cumar",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 29,
+      SOOMAALI: 31,
+      ARABIC: 36,
+      MATH: 18,
+      ENGLISH: 31,
+      BIOLOGY: 29,
+      CHEMISTRY: 31,
+      PHYSICS: 32,
+      GEOGRAPHY: 37,
+      HISTORY: 39,
+      TECHNOLOGY: 19,
+      BUSINESS: 14
+    }
+  },
+  {
+    regNo: "2730475",
+    name: "Maryan Saciid Maxamad",
+    motherName: "Salaado Maxamed Cali",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 4,
+      SOOMAALI: 19,
+      ARABIC: 28,
+      MATH: 28,
+      ENGLISH: 33,
+      BIOLOGY: 32,
+      CHEMISTRY: 35,
+      PHYSICS: 25,
+      GEOGRAPHY: 35,
+      HISTORY: 37,
+      TECHNOLOGY: 24,
+      BUSINESS: 13
+    }
+  },
+  {
+    regNo: "2729574",
+    name: "Maslax Suudi Maxmaed",
+    motherName: "Mako Yuusuf Maxamad",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 5,
+      SOOMAALI: 11,
+      ARABIC: 29,
+      MATH: 16,
+      ENGLISH: 24,
+      BIOLOGY: 11,
+      CHEMISTRY: 19,
+      PHYSICS: 2,
+      GEOGRAPHY: 34,
+      HISTORY: 36,
+      TECHNOLOGY: 16,
+      BUSINESS: 9
+    }
+  },
+  {
+    regNo: "1615036",
+    name: "Munasar Ismaacill Muuse",
+    motherName: "Binti Muxudiin Cali",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 5,
+      SOOMAALI: 4,
+      ARABIC: 29,
+      MATH: 16,
+      ENGLISH: 1,
+      BIOLOGY: 31,
+      CHEMISTRY: 8,
+      PHYSICS: 18,
+      GEOGRAPHY: 32,
+      HISTORY: 9,
+      TECHNOLOGY: 10,
+      BUSINESS: 3
+    }
+  },
+  {
+    regNo: "2631787",
+    name: "Raaxo Xasan Maxamed",
+    motherName: "Madiino Caddaan Suubiye",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 14,
+      SOOMAALI: 14,
+      ARABIC: 26,
+      MATH: 24,
+      ENGLISH: 1,
+      BIOLOGY: 27,
+      CHEMISTRY: 17,
+      PHYSICS: 28,
+      GEOGRAPHY: 33,
+      HISTORY: 34,
+      TECHNOLOGY: 20,
+      BUSINESS: 14
+    }
+  },
+  {
+    regNo: "2631555",
+    name: "Saadaq Cali Cabdi",
+    motherName: "Maano Nuur Cumar",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 6,
+      SOOMAALI: 31,
+      ARABIC: 29,
+      MATH: 33,
+      ENGLISH: 27,
+      BIOLOGY: 20,
+      CHEMISTRY: 17,
+      PHYSICS: 26,
+      GEOGRAPHY: 34,
+      HISTORY: 30,
+      TECHNOLOGY: 22,
+      BUSINESS: 12
+    }
+  },
+  {
+    regNo: "2632060",
+    name: "Sacdiyo Faarax Taakow",
+    motherName: "Seynab Nuur Maxamed",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 31,
+      SOOMAALI: 29,
+      ARABIC: 39,
+      MATH: 30,
+      ENGLISH: 34,
+      BIOLOGY: 30,
+      CHEMISTRY: 39,
+      PHYSICS: 35,
+      GEOGRAPHY: 39,
+      HISTORY: 40,
+      TECHNOLOGY: 17,
+      BUSINESS: 19
+    }
+  },
+  {
+    regNo: "3069503",
+    name: "Sahro Nuur Cilmi",
+    motherName: "Fawsiyo Yuusuf Caddow",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 20,
+      SOOMAALI: 30,
+      ARABIC: 36,
+      MATH: 35,
+      ENGLISH: 36,
+      BIOLOGY: 35,
+      CHEMISTRY: 38,
+      PHYSICS: 40,
+      GEOGRAPHY: 39,
+      HISTORY: 40,
+      TECHNOLOGY: 22,
+      BUSINESS: 33
+    }
+  },
+  {
+    regNo: "1642449",
+    name: "Samiiro Xuseen Maxamuud",
+    motherName: "Madiino Cali Maxamuud",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 6,
+      SOOMAALI: 21,
+      ARABIC: 32,
+      MATH: 17,
+      ENGLISH: 23,
+      BIOLOGY: 35,
+      CHEMISTRY: 14,
+      PHYSICS: 31,
+      GEOGRAPHY: 31,
+      HISTORY: 39,
+      TECHNOLOGY: 13,
+      BUSINESS: 14
+    }
+  },
+  {
+    regNo: "2631578",
+    name: "Subeer Siciid Cuamr",
+    motherName: "Xaliimo Cabdullahi Cumar",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 30,
+      SOOMAALI: 31,
+      ARABIC: 24,
+      MATH: 28,
+      ENGLISH: 36,
+      BIOLOGY: 31,
+      CHEMISTRY: 35,
+      PHYSICS: 40,
+      GEOGRAPHY: 33,
+      HISTORY: 40,
+      TECHNOLOGY: 28,
+      BUSINESS: 18
+    }
+  },
+  {
+    regNo: "2629686",
+    name: "Wehliye Cabdi Xasan",
+    motherName: "Khadiijo Maxamuud Muuse",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 26,
+      SOOMAALI: 35,
+      ARABIC: 33,
+      MATH: 33,
+      ENGLISH: 28,
+      BIOLOGY: 21,
+      CHEMISTRY: 32,
+      PHYSICS: 35,
+      GEOGRAPHY: 32,
+      HISTORY: 36,
+      TECHNOLOGY: 10,
+      BUSINESS: 30
+    }
+  },
+  {
+    regNo: "2631451",
+    name: "Xaawo Cabdi Nuur",
+    motherName: "Caddey Bashiir Xasan",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 30,
+      SOOMAALI: 35,
+      ARABIC: 36,
+      MATH: 24,
+      ENGLISH: 38,
+      BIOLOGY: 33,
+      CHEMISTRY: 37,
+      PHYSICS: 8,
+      GEOGRAPHY: 40,
+      HISTORY: 39,
+      TECHNOLOGY: 28,
+      BUSINESS: 20
+    }
+  },
+  {
+    regNo: "2631646",
+    name: "Xuseen Maxamed Xasan",
+    motherName: "Shariifo Maxumed Axmed",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 8,
+      SOOMAALI: 28,
+      ARABIC: 22.5,
+      MATH: 22,
+      ENGLISH: 21,
+      BIOLOGY: 21,
+      CHEMISTRY: 20,
+      PHYSICS: 30,
+      GEOGRAPHY: 37,
+      HISTORY: 9,
+      TECHNOLOGY: 21,
+      BUSINESS: 17
+    }
+  },
+  {
+    regNo: "2632015",
+    name: "Yaasmiiin Muxudiin Axmed",
+    motherName: "Roobeey Culusow Xasan",
+    class: "Form 1",
+    year: "2025-2026",
+    results: {
+      ISLAMIC: 20,
+      SOOMAALI: 30,
+      ARABIC: 33.5,
+      MATH: 35,
+      ENGLISH: 38,
+      BIOLOGY: 33,
+      CHEMISTRY: 33,
+      PHYSICS: 34,
+      GEOGRAPHY: 38,
+      HISTORY: 36,
+      TECHNOLOGY: 25,
+      BUSINESS: 26
+    }
+  },
+  {
+    regNo: "1259",
+    name: "Yonis Mohamed Yusuf Ali",
+    motherName: "Halima Abdikadir Mohamud",
+    class: "Class 1 A",
+    year: "2025-2026",
+    results: {
+      AKHLAAQDA: 22,
+      "اللغة العربية": 22,
+      "التربية الإسلامية": 22,
+      XISAAB: 22
+    }
+  },
+  {
+    regNo: "2674030",
+    name: "Cabaas Cumar Cusmaan Abuukar",
+    motherName: "Muna Maki Ciise",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 34,
+      "اللغة العربية": 26,
+      XISAAB: 24,
+      ENGLISH: 16,
+      "CILMI BULSHO": 36,
+      SAYNIS: 30,
+      TEKNOOLOJI: 19
+    }
+  },
+  {
+    regNo: "2674031",
+    name: "Xudeyfa Siid Cali Cusman",
+    motherName: "Xafso Cali Xuseen",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 32,
+      "اللغة العربية": 25,
+      XISAAB: 30,
+      ENGLISH: 30,
+      "CILMI BULSHO": 38,
+      SAYNIS: 38,
+      TEKNOOLOJI: 24.5
+    }
+  },
+  {
+    regNo: "2673912",
+    name: "Yuusuf Cabdullaahi Muxudiin",
+    motherName: "Xaliimo Cumar",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 38,
+      "اللغة العربية": 34,
+      XISAAB: 27,
+      ENGLISH: 25,
+      "CILMI BULSHO": 39,
+      SAYNIS: 37,
+      TEKNOOLOJI: 27.5
+    }
+  },
+  {
+    regNo: "2674044",
+    name: "Cabdirisaaq Xasan Maxamed Faarax",
+    motherName: "Maryan Muse Xaaji",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 36,
+      "اللغة العربية": 33,
+      XISAAB: 38,
+      ENGLISH: 33,
+      "CILMI BULSHO": 33,
+      SAYNIS: 36,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "2629658",
+    name: "Cabdullahi Cali Xasan",
+    motherName: "Faadumo Xaashi Axmed",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 33,
+      "اللغة العربية": 30,
+      XISAAB: 32,
+      ENGLISH: 31,
+      "CILMI BULSHO": 32,
+      SAYNIS: 30,
+      TEKNOOLOJI: 27.5
+    }
+  },
+  {
+    regNo: "2629658",
+    name: "Cabdullahi Xasan Cabdule",
+    motherName: "Faadumo Xaashi Axmed",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 32,
+      SOOMAALI: 26,
+      "اللغة العربية": 33,
+      XISAAB: 32,
+      ENGLISH: 26,
+      "CILMI BULSHO": 40,
+      SAYNIS: 34,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "2674033",
+    name: "Cali Cumar Cusmaan Abuukar",
+    motherName: "Muno Maki Ciise",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 37,
+      "اللغة العربية": 25,
+      XISAAB: 32,
+      ENGLISH: 4,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 25
+    }
+  },
+  {
+    regNo: "3114263",
+    name: "Cumar Axmed Dhiblaawe",
+    motherName: "Ifrax Cumar Cali",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 33,
+      "اللغة العربية": 16,
+      XISAAB: 28,
+      ENGLISH: 30,
+      "CILMI BULSHO": 39,
+      SAYNIS: 6,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "2674040",
+    name: "Cumar Cabdalle Macow Cabdulle",
+    motherName: "Jiino Yuusuf Cali",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 37,
+      "اللغة العربية": 26,
+      XISAAB: 28,
+      ENGLISH: 25,
+      "CILMI BULSHO": 34,
+      SAYNIS: 33,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "2629894",
+    name: "Eyman Ibraahim Xasan",
+    motherName: "Maryan Maxamed Dhinbil",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 36,
+      SOOMAALI: 35,
+      "اللغة العربية": 20,
+      XISAAB: 33,
+      ENGLISH: 18,
+      "CILMI BULSHO": 21,
+      SAYNIS: 32,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "2872621",
+    name: "Faadumo Maxamed Maxamuud",
+    motherName: "Khadiijo Maxamad Cali",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 37,
+      SOOMAALI: 37,
+      "اللغة العربية": 25,
+      XISAAB: 31,
+      ENGLISH: 24,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 32.5
+    }
+  },
+  {
+    regNo: "2872628",
+    name: "Farxiyo Maxamed Maxamuud",
+    motherName: "Khadiijo Maxamad Cali",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 40,
+      SOOMAALI: 35,
+      "اللغة العربية": 28,
+      XISAAB: 31,
+      ENGLISH: 28,
+      "CILMI BULSHO": 27,
+      SAYNIS: 38,
+      TEKNOOLOJI: 37
+    }
+  },
+  {
+    regNo: "2674045",
+    name: "Fawsiyo Cumar Cusmaan Abuukar",
+    motherName: "Muno Maki Ciise",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 34,
+      SOOMAALI: 35,
+      "اللغة العربية": 28,
+      XISAAB: 34,
+      ENGLISH: 26,
+      "CILMI BULSHO": 37,
+      SAYNIS: 40,
+      TEKNOOLOJI: 28
+    }
+  },
+  {
+    regNo: "2674042",
+    name: "Ibraahim Nuur Boolow",
+    motherName: "Zaynab Cali Ibrahim",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 32,
+      "اللغة العربية": 32,
+      XISAAB: 20,
+      ENGLISH: 24,
+      "CILMI BULSHO": 10,
+      SAYNIS: 25,
+      TEKNOOLOJI: 28
+    }
+  },
+  {
+    regNo: "2222",
+    name: "Ismaciil Cali Xasan",
+    motherName: "Not Provided",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 31,
+      "اللغة العربية": 25,
+      XISAAB: 21,
+      ENGLISH: 24,
+      "CILMI BULSHO": 30,
+      SAYNIS: 33,
+      TEKNOOLOJI: 23
+    }
+  },
+  {
+    regNo: "2769407",
+    name: "Maxamed Cali Xasan",
+    motherName: "Deeqo Geedi Cumar",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 18,
+      SOOMAALI: 32,
+      "اللغة العربية": 20,
+      XISAAB: 25,
+      ENGLISH: 29,
+      "CILMI BULSHO": 34,
+      SAYNIS: 27,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "2674035",
+    name: "Maxamed Cumar Xasan Jimcaale",
+    motherName: "Sahro Xasan Cali",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 31,
+      "اللغة العربية": 29,
+      XISAAB: 20,
+      ENGLISH: 24,
+      "CILMI BULSHO": 37,
+      SAYNIS: 34,
+      TEKNOOLOJI: 28.5
+    }
+  },
+  {
+    regNo: "2674034",
+    name: "Mursal Cabdixamiid Cusmaan Aadan",
+    motherName: "Xafso Cali Xuseen",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 36,
+      "اللغة العربية": 34,
+      XISAAB: 39,
+      ENGLISH: 32,
+      "CILMI BULSHO": 32,
+      SAYNIS: 35,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "1615015",
+    name: "Najiib Muuse Maxamed",
+    motherName: "Xaliimo Cali Macallin",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 32,
+      "اللغة العربية": 5,
+      XISAAB: 1,
+      ENGLISH: 20,
+      "CILMI BULSHO": 19,
+      SAYNIS: 25,
+      TEKNOOLOJI: 24.5
+    }
+  },
+  {
+    regNo: "1542419",
+    name: "Saabir Axmed Maxamuud Cumar",
+    motherName: "Khadiijo Aadan Maxamad",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 34,
+      "اللغة العربية": 29,
+      XISAAB: 32,
+      ENGLISH: 29,
+      "CILMI BULSHO": 33,
+      SAYNIS: 36,
+      TEKNOOLOJI: 31.5
+    }
+  },
+  {
+    regNo: "2730482",
+    name: "Sacdiyo Saciid Maxamed",
+    motherName: "Salaado Macallin Maxamad",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 38,
+      "اللغة العربية": 26,
+      XISAAB: 23,
+      ENGLISH: 24,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "3114262",
+    name: "Xaliimo Yuusuf Mcln Xasan",
+    motherName: "Khadiijo Cabdulqaadir Iidow",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 38,
+      SOOMAALI: 38,
+      "اللغة العربية": 29,
+      XISAAB: 37,
+      ENGLISH: 28,
+      "CILMI BULSHO": 40,
+      SAYNIS: 39,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "2674032",
+    name: "Xamsa Siid Cali Cusman Aadan",
+    motherName: "Xafso Cali Xuseen",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 32,
+      "اللغة العربية": 29,
+      XISAAB: 28,
+      ENGLISH: 27,
+      "CILMI BULSHO": 36,
+      SAYNIS: 38,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "2674041",
+    name: "Xasan Cabdullaahi Cumar",
+    motherName: "Xaliimo Cabdi Lahi Cumar",
+    class: "Grade 8",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 32,
+      "اللغة العربية": 10,
+      XISAAB: 14,
+      ENGLISH: 27,
+      "CILMI BULSHO": 36,
+      SAYNIS: 19,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "300",
+    name: "Amran Cabdi Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 32,
+      "اللغة العربية": 32,
+      XISAAB: 20,
+      ENGLISH: 29,
+      "CILMI BULSHO": 39,
+      SAYNIS: 37,
+      TEKNOOLOJI: 28
+    }
+  },
+  {
+    regNo: "301",
+    name: "Asmo Abuukar Aweys",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 7,
+      SOOMAALI: 7,
+      "اللغة العربية": 10,
+      XISAAB: 5,
+      ENGLISH: 5,
+      "CILMI BULSHO": 10,
+      SAYNIS: 10,
+      TEKNOOLOJI: 4
+    }
+  },
+  {
+    regNo: "302",
+    name: "Ayuub Cabdullaahi Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 17,
+      "اللغة العربية": 6,
+      XISAAB: 10,
+      ENGLISH: 28,
+      "CILMI BULSHO": 37,
+      SAYNIS: 34,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "303",
+    name: "Bishaar Maxamed Xasan",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 23,
+      "اللغة العربية": 29,
+      XISAAB: 18,
+      ENGLISH: 31,
+      "CILMI BULSHO": 39,
+      SAYNIS: 36,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "304",
+    name: "Caasho Cali Muxudiin",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 40,
+      SOOMAALI: 38,
+      "اللغة العربية": 40,
+      XISAAB: 20,
+      ENGLISH: 34,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 34
+    }
+  },
+  {
+    regNo: "305",
+    name: "Caasho Yuusuf Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 28,
+      "اللغة العربية": 33,
+      XISAAB: 17,
+      ENGLISH: 35,
+      "CILMI BULSHO": 39,
+      SAYNIS: 38,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "308",
+    name: "Cabdi Xasan Cabdulle",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 25,
+      "اللغة العربية": 29,
+      XISAAB: 20,
+      ENGLISH: 26,
+      "CILMI BULSHO": 39,
+      SAYNIS: 35,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "309",
+    name: "Cabdicasiis Xasan Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 32,
+      "اللغة العربية": 35,
+      XISAAB: 26,
+      ENGLISH: 23,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "310",
+    name: "Cabdiraxmaan Cabdullaahi Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 31,
+      "اللغة العربية": 23,
+      XISAAB: 19,
+      ENGLISH: 32,
+      "CILMI BULSHO": 35,
+      SAYNIS: 39,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "311",
+    name: "Cabdirisaaq Cali Afrax Faarax Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 38,
+      "اللغة العربية": 30,
+      XISAAB: 22,
+      ENGLISH: 34,
+      "CILMI BULSHO": 34,
+      SAYNIS: 36,
+      TEKNOOLOJI: 21
+    }
+  },
+  {
+    regNo: "312",
+    name: "Cabdisalaan Axmed Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 26,
+      "اللغة العربية": 11,
+      XISAAB: 11,
+      ENGLISH: 24,
+      "CILMI BULSHO": 39,
+      SAYNIS: 29,
+      TEKNOOLOJI: 29
+    }
+  },
+  {
+    regNo: "313",
+    name: "Cabdisamad Abuukar Aweys",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 35,
+      SOOMAALI: 32,
+      "اللغة العربية": 33,
+      XISAAB: 15,
+      ENGLISH: 23,
+      "CILMI BULSHO": 40,
+      SAYNIS: 10,
+      TEKNOOLOJI: 7
+    }
+  },
+  {
+    regNo: "314",
+    name: "Cabdullaahi Cali Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 30,
+      "اللغة العربية": 33,
+      XISAAB: 24,
+      ENGLISH: 40,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 29
+    }
+  },
+  {
+    regNo: "315",
+    name: "Cadnaan Taakow Ibraahim",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 21,
+      "اللغة العربية": 32,
+      XISAAB: 21,
+      ENGLISH: 30,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 33
+    }
+  },
+  {
+    regNo: "316",
+    name: "Falis Cali Xasan",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 32,
+      "اللغة العربية": 35,
+      XISAAB: 24,
+      ENGLISH: 32,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 29
+    }
+  },
+  {
+    regNo: "317",
+    name: "Farxiyo Maxamed Cabdullahi",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 33,
+      "اللغة العربية": 23,
+      XISAAB: 19,
+      ENGLISH: 35,
+      "CILMI BULSHO": 40,
+      SAYNIS: 38,
+      TEKNOOLOJI: 27
+    }
+  },
+  {
+    regNo: "318",
+    name: "Fatxi Cabdiraxiin Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 34,
+      "اللغة العربية": 32,
+      XISAAB: 29,
+      ENGLISH: 37,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "319",
+    name: "Faysal Ismaciil Cabdulle",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 34,
+      SOOMAALI: 37,
+      "اللغة العربية": 29,
+      XISAAB: 24,
+      ENGLISH: 36,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "340",
+    name: "Hani Maxamed Xaaji",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 38,
+      SOOMAALI: 38,
+      "اللغة العربية": 40,
+      XISAAB: 27,
+      ENGLISH: 33,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 22
+    }
+  },
+  {
+    regNo: "341",
+    name: "Hilaal Cabdi Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 30,
+      "اللغة العربية": 27,
+      XISAAB: 26,
+      ENGLISH: 33,
+      "CILMI BULSHO": 40,
+      SAYNIS: 37,
+      TEKNOOLOJI: 28
+    }
+  },
+  {
+    regNo: "342",
+    name: "Idman Cabdulqaadir Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 35,
+      SOOMAALI: 31,
+      "اللغة العربية": 32,
+      XISAAB: 20,
+      ENGLISH: 34,
+      "CILMI BULSHO": 37,
+      SAYNIS: 39,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "343",
+    name: "Iqro Cali Xasan Cali",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 36,
+      SOOMAALI: 38,
+      "اللغة العربية": 37,
+      XISAAB: 34,
+      ENGLISH: 26,
+      "CILMI BULSHO": 40,
+      SAYNIS: 10,
+      TEKNOOLOJI: 35
+    }
+  },
+  {
+    regNo: "344",
+    name: "Iqro Cali Xasan Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 31,
+      "اللغة العربية": 32,
+      XISAAB: 29,
+      ENGLISH: 36,
+      "CILMI BULSHO": 37,
+      SAYNIS: 37,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "345",
+    name: "Kowthar Careys Da Ud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 26,
+      "اللغة العربية": 27,
+      XISAAB: 18,
+      ENGLISH: 28,
+      "CILMI BULSHO": 37,
+      SAYNIS: 25,
+      TEKNOOLOJI: 19
+    }
+  },
+  {
+    regNo: "346",
+    name: "Ma'iddo Biikar Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 8,
+      "اللغة العربية": 24,
+      XISAAB: 28,
+      ENGLISH: 30,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "347",
+    name: "Maariyo Muxudiin Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 8,
+      SOOMAALI: 35,
+      "اللغة العربية": 8,
+      XISAAB: 8,
+      ENGLISH: 4,
+      "CILMI BULSHO": 10,
+      SAYNIS: 10,
+      TEKNOOLOJI: 9
+    }
+  },
+  {
+    regNo: "348",
+    name: "Maxamed Cabdi Cabdullaahi",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 22,
+      "اللغة العربية": 32,
+      XISAAB: 21,
+      ENGLISH: 48,
+      "CILMI BULSHO": 40,
+      SAYNIS: 35,
+      TEKNOOLOJI: 23
+    }
+  },
+  {
+    regNo: "349",
+    name: "Maxamed Daahir Muuse",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 31,
+      SOOMAALI: 32,
+      "اللغة العربية": 37,
+      XISAAB: 18,
+      ENGLISH: 31,
+      "CILMI BULSHO": 40,
+      SAYNIS: 39,
+      TEKNOOLOJI: 34
+    }
+  },
+  {
+    regNo: "350",
+    name: "Maxamed Suudi Cumar",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 22,
+      "اللغة العربية": 33,
+      XISAAB: 32,
+      ENGLISH: 22,
+      "CILMI BULSHO": 39,
+      SAYNIS: 38,
+      TEKNOOLOJI: 28
+    }
+  },
+  {
+    regNo: "351",
+    name: "Maxamed Xasan Maxamuud Jaamac",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 20,
+      "اللغة العربية": 33,
+      XISAAB: 23,
+      ENGLISH: 27,
+      "CILMI BULSHO": 39,
+      SAYNIS: 33,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "352",
+    name: "Maxamed Yuusuf Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 19,
+      "اللغة العربية": 35,
+      XISAAB: 19,
+      ENGLISH: 28,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "353",
+    name: "Maxamuud Xasan Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 36,
+      "اللغة العربية": 16,
+      XISAAB: 10,
+      ENGLISH: 27,
+      "CILMI BULSHO": 38,
+      SAYNIS: 9,
+      TEKNOOLOJI: 33
+    }
+  },
+  {
+    regNo: "306",
+    name: "Munasar Xasan Maxamuud Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 34,
+      SOOMAALI: 39,
+      "اللغة العربية": 33,
+      XISAAB: 23,
+      ENGLISH: 34,
+      "CILMI BULSHO": 40,
+      SAYNIS: 39,
+      TEKNOOLOJI: 23
+    }
+  },
+  {
+    regNo: "354",
+    name: "Nafiso Axmed Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 38,
+      SOOMAALI: 37,
+      "اللغة العربية": 37,
+      XISAAB: 26,
+      ENGLISH: 35,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 29
+    }
+  },
+  {
+    regNo: "355",
+    name: "Najiib Axmed Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 35,
+      "اللغة العربية": 35,
+      XISAAB: 29,
+      ENGLISH: 25,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 27
+    }
+  },
+  {
+    regNo: "356",
+    name: "Nashaad Axmed Xasan",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 38,
+      SOOMAALI: 35,
+      "اللغة العربية": 35,
+      XISAAB: 36,
+      ENGLISH: 37,
+      "CILMI BULSHO": 33,
+      SAYNIS: 40,
+      TEKNOOLOJI: 39
+    }
+  },
+  {
+    regNo: "357",
+    name: "Nasro Aweys Ibraahim",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 32,
+      SOOMAALI: 32,
+      "اللغة العربية": 31,
+      XISAAB: 27,
+      ENGLISH: 6,
+      "CILMI BULSHO": 40,
+      SAYNIS: 38,
+      TEKNOOLOJI: 21
+    }
+  },
+  {
+    regNo: "358",
+    name: "Qaali Muxudiin Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 36,
+      "اللغة العربية": 29,
+      XISAAB: 24,
+      ENGLISH: 33,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "359",
+    name: "Raxmo Cabdullaahi Nuur",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 38,
+      SOOMAALI: 32,
+      "اللغة العربية": 38,
+      XISAAB: 25,
+      ENGLISH: 36,
+      "CILMI BULSHO": 40,
+      SAYNIS: 38,
+      TEKNOOLOJI: 24
+    }
+  },
+  {
+    regNo: "360",
+    name: "Saabiriin Cali Shamcuun",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 33,
+      "اللغة العربية": 35,
+      XISAAB: 28,
+      ENGLISH: 34,
+      "CILMI BULSHO": 39,
+      SAYNIS: 39,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "361",
+    name: "Saadaq Cumar Xuseen",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 32,
+      "اللغة العربية": 31,
+      XISAAB: 11,
+      ENGLISH: 30,
+      "CILMI BULSHO": 40,
+      SAYNIS: 32,
+      TEKNOOLOJI: 8
+    }
+  },
+  {
+    regNo: "362",
+    name: "Sahro Cumar Cabdulle",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 32,
+      SOOMAALI: 33,
+      "اللغة العربية": 34,
+      XISAAB: 30,
+      ENGLISH: 38,
+      "CILMI BULSHO": 40,
+      SAYNIS: 39,
+      TEKNOOLOJI: 33
+    }
+  },
+  {
+    regNo: "363",
+    name: "Sheymaan Cabdullahi Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 29,
+      "اللغة العربية": 22,
+      XISAAB: 23,
+      ENGLISH: 26,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "364",
+    name: "Siciid Xuseen Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 23,
+      "اللغة العربية": 35,
+      XISAAB: 27,
+      ENGLISH: 26,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "365",
+    name: "Sumayo Cali Shamcuun Nuur",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 37,
+      SOOMAALI: 36,
+      "اللغة العربية": 38,
+      XISAAB: 24,
+      ENGLISH: 37,
+      "CILMI BULSHO": 31,
+      SAYNIS: 40,
+      TEKNOOLOJI: 27
+    }
+  },
+  {
+    regNo: "366",
+    name: "Sumayo Jeylaani Cabdi",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 36,
+      "اللغة العربية": 29,
+      XISAAB: 27,
+      ENGLISH: 34,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 31
+    }
+  },
+  {
+    regNo: "307",
+    name: "Sumayo Xasan Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 40,
+      SOOMAALI: 34,
+      "اللغة العربية": 35,
+      XISAAB: 29,
+      ENGLISH: 34,
+      "CILMI BULSHO": 40,
+      SAYNIS: 38,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "367",
+    name: "Xafso Abuukar Axmed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 38,
+      SOOMAALI: 31,
+      "اللغة العربية": 37,
+      XISAAB: 25,
+      ENGLISH: 34,
+      "CILMI BULSHO": 40,
+      SAYNIS: 35,
+      TEKNOOLOJI: 27
+    }
+  },
+  {
+    regNo: "368",
+    name: "Xudeyfi Maxamed Cabdullahi",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 28,
+      "اللغة العربية": 35,
+      XISAAB: 21,
+      ENGLISH: 28,
+      "CILMI BULSHO": 40,
+      SAYNIS: 40,
+      TEKNOOLOJI: 23
+    }
+  },
+  {
+    regNo: "369",
+    name: "Xuseen Cumar Cali",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 30,
+      "اللغة العربية": 23,
+      XISAAB: 17,
+      ENGLISH: 32,
+      "CILMI BULSHO": 35,
+      SAYNIS: 40,
+      TEKNOOLOJI: 30
+    }
+  },
+  {
+    regNo: "370",
+    name: "Xuseen Jeylaani Cabdi Sheekh",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 29,
+      "اللغة العربية": 33,
+      XISAAB: 19,
+      ENGLISH: 34,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 26
+    }
+  },
+  {
+    regNo: "371",
+    name: "Yuusuf Maxamed Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 27,
+      "اللغة العربية": 24,
+      XISAAB: 12,
+      ENGLISH: 33,
+      "CILMI BULSHO": 40,
+      SAYNIS: 39,
+      TEKNOOLOJI: 25
+    }
+  },
+  {
+    regNo: "372",
+    name: "Yuusuf Xasan Aweys",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 24,
+      "اللغة العربية": 29,
+      XISAAB: 10,
+      ENGLISH: 28,
+      "CILMI BULSHO": 39,
+      SAYNIS: 40,
+      TEKNOOLOJI: 19
+    }
+  },
+  {
+    regNo: "373",
+    name: "Iqro Cabdi Maxamed",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 28,
+      "اللغة العربية": 24,
+      XISAAB: 18,
+      ENGLISH: 20,
+      "CILMI BULSHO": 30,
+      SAYNIS: 28,
+      TEKNOOLOJI: 22
+    }
+  },
+  {
+    regNo: "374",
+    name: "Farxiyo Cabdi Xuseen",
+    motherName: "Not Provided",
+    class: "Class 7",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 28,
+      "اللغة العربية": 27,
+      XISAAB: 5,
+      ENGLISH: 26,
+      "CILMI BULSHO": 0,
+      SAYNIS: 30,
+      TEKNOOLOJI: 14
+    }
+  },
+  {
+    regNo: "375",
+    name: "Abshir Ibrahim Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 34,
+      "اللغة العربية": 23,
+      XISAAB: 27,
+      ENGLISH: 33,
+      SOCIAL: 40,
+      SCIENCE: 37,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "376",
+    name: "Adno Aadan Isaaq Cabdi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 33,
+      "اللغة العربية": 26,
+      XISAAB: 25,
+      ENGLISH: 20,
+      SOCIAL: 39,
+      SCIENCE: 37,
+      TECHNOLOGY: 27
+    }
+  },
+  {
+    regNo: "377",
+    name: "Amran C/raxmaan Xasan Cadaw",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 32,
+      SOOMAALI: 36,
+      "اللغة العربية": 34,
+      XISAAB: 25,
+      ENGLISH: 21,
+      SOCIAL: 34,
+      SCIENCE: 31,
+      TECHNOLOGY: 29
+    }
+  },
+  {
+    regNo: "378",
+    name: "Anas Cabdullaahi Salad",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 34,
+      "اللغة العربية": 32,
+      XISAAB: 31,
+      ENGLISH: 22,
+      SOCIAL: 36,
+      SCIENCE: 37,
+      TECHNOLOGY: 27
+    }
+  },
+  {
+    regNo: "379",
+    name: "Axmad Cabdullaahi Salaad",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 25,
+      "اللغة العربية": 22,
+      XISAAB: 28,
+      ENGLISH: 23,
+      SOCIAL: 39,
+      SCIENCE: 10,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "380",
+    name: "Ayaan Cabdiraxmaan Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 30,
+      "اللغة العربية": 26,
+      XISAAB: 18,
+      ENGLISH: 31,
+      SOCIAL: 35,
+      SCIENCE: 37,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "381",
+    name: "Ayuub C/rixiin Maxamed Cabdi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 32,
+      "اللغة العربية": 21,
+      XISAAB: 16,
+      ENGLISH: 25,
+      SOCIAL: 39,
+      SCIENCE: 37,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "382",
+    name: "Caasho Cabdullaahi Maxamed Xuseen",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 31,
+      "اللغة العربية": 26,
+      XISAAB: 31,
+      ENGLISH: 27,
+      SOCIAL: 37,
+      SCIENCE: 32,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "383",
+    name: "Caasho Maxamed Cabdullaahi Cosoble",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 4,
+      SOOMAALI: 2,
+      "اللغة العربية": 6,
+      XISAAB: 5,
+      ENGLISH: 3,
+      SOCIAL: 8,
+      SCIENCE: 10,
+      TECHNOLOGY: 5
+    }
+  },
+  {
+    regNo: "384",
+    name: "Caasho Xasan Maxamuud Qaasim",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 31,
+      "اللغة العربية": 30,
+      XISAAB: 23,
+      ENGLISH: 32,
+      SOCIAL: 36,
+      SCIENCE: 35,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "385",
+    name: "Cabdi Xasan Maxamed Jaamac",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 29,
+      "اللغة العربية": 20,
+      XISAAB: 14,
+      ENGLISH: 23,
+      SOCIAL: 33,
+      SCIENCE: 35,
+      TECHNOLOGY: 22
+    }
+  },
+  {
+    regNo: "386",
+    name: "Cabdullaahi Isman Maxamuud Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 27,
+      "اللغة العربية": 25,
+      XISAAB: 19,
+      ENGLISH: 35,
+      SOCIAL: 39,
+      SCIENCE: 28,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "387",
+    name: "Cali Daahir Maxamuud Ismaan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 28,
+      "اللغة العربية": 29,
+      XISAAB: 32,
+      ENGLISH: 24,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "388",
+    name: "Cali Jimcaale Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 32,
+      "اللغة العربية": 29,
+      XISAAB: 16,
+      ENGLISH: 33,
+      SOCIAL: 9,
+      SCIENCE: 37,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "389",
+    name: "Dheyman Cabdi Xasan Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 31,
+      "اللغة العربية": 21,
+      XISAAB: 14,
+      ENGLISH: 15,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 18
+    }
+  },
+  {
+    regNo: "390",
+    name: "Faysal Axmed Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 20,
+      "اللغة العربية": 21,
+      XISAAB: 25,
+      ENGLISH: 34,
+      SOCIAL: 37,
+      SCIENCE: 37,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "391",
+    name: "Ikhlaas Cali Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 30,
+      "اللغة العربية": 30,
+      XISAAB: 25,
+      ENGLISH: 40,
+      SOCIAL: 40,
+      SCIENCE: 37,
+      TECHNOLOGY: 33
+    }
+  },
+  {
+    regNo: "392",
+    name: "Ikraan Maxamuud Nuur Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 27,
+      "اللغة العربية": 29,
+      XISAAB: 31,
+      ENGLISH: 21,
+      SOCIAL: 39,
+      SCIENCE: 29,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "393",
+    name: "Khadiijo Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 32,
+      "اللغة العربية": 32,
+      XISAAB: 14,
+      ENGLISH: 28,
+      SOCIAL: 37,
+      SCIENCE: 7,
+      TECHNOLOGY: 21
+    }
+  },
+  {
+    regNo: "394",
+    name: "Maa'ido C/llaahi Maxamuud Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 25,
+      "اللغة العربية": 29,
+      XISAAB: 21,
+      ENGLISH: 28,
+      SOCIAL: 36,
+      SCIENCE: 34,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "395",
+    name: "Maa'ido Muuse Maxamed Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 34,
+      "اللغة العربية": 24,
+      XISAAB: 15,
+      ENGLISH: 32,
+      SOCIAL: 36,
+      SCIENCE: 34,
+      TECHNOLOGY: 23
+    }
+  },
+  {
+    regNo: "396",
+    name: "Maa'ido Xasan Maalin Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 29,
+      "اللغة العربية": 23,
+      XISAAB: 21,
+      ENGLISH: 35,
+      SOCIAL: 40,
+      SCIENCE: 31,
+      TECHNOLOGY: 22
+    }
+  },
+  {
+    regNo: "397",
+    name: "Maandeeq Faarax Taakow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 39,
+      "اللغة العربية": 21,
+      XISAAB: 20,
+      ENGLISH: 26,
+      SOCIAL: 34,
+      SCIENCE: 37,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "398",
+    name: "Maqdis Xasan Maalin Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 25,
+      "اللغة العربية": 26,
+      XISAAB: 16,
+      ENGLISH: 21,
+      SOCIAL: 38,
+      SCIENCE: 24,
+      TECHNOLOGY: 29
+    }
+  },
+  {
+    regNo: "399",
+    name: "Maryan Cali Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 24,
+      "اللغة العربية": 30,
+      XISAAB: 26,
+      ENGLISH: 6,
+      SOCIAL: 32,
+      SCIENCE: 35,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "400",
+    name: "Maxamed Abuukar Jeylaani",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 27,
+      "اللغة العربية": 22,
+      XISAAB: 23,
+      ENGLISH: 23,
+      SOCIAL: 38,
+      SCIENCE: 34,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "401",
+    name: "Maysar Axmed Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 35,
+      "اللغة العربية": 32,
+      XISAAB: 25,
+      ENGLISH: 33,
+      SOCIAL: 38,
+      SCIENCE: 32,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "402",
+    name: "Muhanad Ismaacil Axmed Nuur",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 31,
+      "اللغة العربية": 25,
+      XISAAB: 26,
+      ENGLISH: 38,
+      SOCIAL: 34,
+      SCIENCE: 37,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "403",
+    name: "Muno Ismaaciil Da Uud Cadaw",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 28,
+      "اللغة العربية": 25,
+      XISAAB: 28,
+      ENGLISH: 38,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "404",
+    name: "Mustaf Barre Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 14,
+      SOOMAALI: 30,
+      "اللغة العربية": 16,
+      XISAAB: 22,
+      ENGLISH: 33,
+      SOCIAL: 35,
+      SCIENCE: 34,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "405",
+    name: "Nasro Cusmaan Cadaan Suubiye",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 33,
+      "اللغة العربية": 24,
+      XISAAB: 19,
+      ENGLISH: 22,
+      SOCIAL: 40,
+      SCIENCE: 29,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "406",
+    name: "Nasteexo Daahir Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 25,
+      "اللغة العربية": 29,
+      XISAAB: 24,
+      ENGLISH: 25,
+      SOCIAL: 37,
+      SCIENCE: 37,
+      TECHNOLOGY: 7
+    }
+  },
+  {
+    regNo: "407",
+    name: "Raxmo Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 31,
+      SOOMAALI: 31,
+      "اللغة العربية": 30,
+      XISAAB: 16,
+      ENGLISH: 26,
+      SOCIAL: 38,
+      SCIENCE: 34,
+      TECHNOLOGY: 9
+    }
+  },
+  {
+    regNo: "408",
+    name: "Sahro Jeelle Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 30,
+      "اللغة العربية": 29,
+      XISAAB: 28,
+      ENGLISH: 32,
+      SOCIAL: 36,
+      SCIENCE: 34,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "409",
+    name: "Shukri Geeyseey Caddow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 32,
+      "اللغة العربية": 32,
+      XISAAB: 30,
+      ENGLISH: 32,
+      SOCIAL: 31,
+      SCIENCE: 37,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "410",
+    name: "Xasan Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 32,
+      "اللغة العربية": 35,
+      XISAAB: 16,
+      ENGLISH: 23,
+      SOCIAL: 40,
+      SCIENCE: 30,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "411",
+    name: "Xasan Nuux Ibraahim Mocow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 26,
+      "اللغة العربية": 27,
+      XISAAB: 20,
+      ENGLISH: 34,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 4
+    }
+  },
+  {
+    regNo: "412",
+    name: "Xasan Shiiq Muuse Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 34,
+      "اللغة العربية": 26,
+      XISAAB: 21,
+      ENGLISH: 20,
+      SOCIAL: 40,
+      SCIENCE: 37,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "413",
+    name: "Xuseen Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 20,
+      "اللغة العربية": 25,
+      XISAAB: 19,
+      ENGLISH: 28,
+      SOCIAL: 37,
+      SCIENCE: 27,
+      TECHNOLOGY: 7
+    }
+  },
+  {
+    regNo: "414",
+    name: "Yaasiin Cabdi Malik Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 16,
+      SOOMAALI: 22,
+      "اللغة العربية": 23,
+      XISAAB: 19,
+      ENGLISH: 33,
+      SOCIAL: 39,
+      SCIENCE: 34,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "415",
+    name: "Yaxye Cabdi Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 5,
+      "اللغة العربية": 27,
+      XISAAB: 18,
+      ENGLISH: 22,
+      SOCIAL: 39,
+      SCIENCE: 10,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "416",
+    name: "Bashir Geeysey Caddow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 18,
+      "اللغة العربية": 25,
+      XISAAB: 12,
+      ENGLISH: 24,
+      SOCIAL: 39,
+      SCIENCE: 5,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "417",
+    name: "C/qaadir Xasan Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 27,
+      "اللغة العربية": 18,
+      XISAAB: 13,
+      ENGLISH: 33,
+      SOCIAL: 27,
+      SCIENCE: 37,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "418",
+    name: "Nuuro Jimcaale Xuseen",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 24,
+      "اللغة العربية": 21,
+      XISAAB: 18,
+      ENGLISH: 18,
+      SOCIAL: 22,
+      SCIENCE: 21,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "375",
+    name: "Abshir Ibrahim Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 34,
+      "اللغة العربية": 23,
+      XISAAB: 27,
+      ENGLISH: 33,
+      SOCIAL: 40,
+      SCIENCE: 37,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "376",
+    name: "Adno Aadan Isaaq Cabdi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 33,
+      "اللغة العربية": 26,
+      XISAAB: 25,
+      ENGLISH: 20,
+      SOCIAL: 39,
+      SCIENCE: 37,
+      TECHNOLOGY: 27
+    }
+  },
+  {
+    regNo: "377",
+    name: "Amran C/raxmaan Xasan Cadaw",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 32,
+      SOOMAALI: 36,
+      "اللغة العربية": 34,
+      XISAAB: 25,
+      ENGLISH: 21,
+      SOCIAL: 34,
+      SCIENCE: 31,
+      TECHNOLOGY: 29
+    }
+  },
+  {
+    regNo: "378",
+    name: "Anas Cabdullaahi Salad",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 34,
+      "اللغة العربية": 32,
+      XISAAB: 31,
+      ENGLISH: 22,
+      SOCIAL: 36,
+      SCIENCE: 37,
+      TECHNOLOGY: 27
+    }
+  },
+  {
+    regNo: "379",
+    name: "Axmad Cabdullaahi Salaad",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 25,
+      "اللغة العربية": 22,
+      XISAAB: 28,
+      ENGLISH: 23,
+      SOCIAL: 39,
+      SCIENCE: 10,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "380",
+    name: "Ayaan Cabdiraxmaan Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 30,
+      "اللغة العربية": 26,
+      XISAAB: 18,
+      ENGLISH: 31,
+      SOCIAL: 35,
+      SCIENCE: 37,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "381",
+    name: "Ayuub C/rixiin Maxamed Cabdi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 32,
+      "اللغة العربية": 21,
+      XISAAB: 16,
+      ENGLISH: 25,
+      SOCIAL: 39,
+      SCIENCE: 37,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "382",
+    name: "Caasho Cabdullaahi Maxamed Xuseen",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 31,
+      "اللغة العربية": 26,
+      XISAAB: 31,
+      ENGLISH: 27,
+      SOCIAL: 37,
+      SCIENCE: 32,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "383",
+    name: "Caasho Maxamed Cabdullaahi Cosoble",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 4,
+      SOOMAALI: 2,
+      "اللغة العربية": 6,
+      XISAAB: 5,
+      ENGLISH: 3,
+      SOCIAL: 8,
+      SCIENCE: 10,
+      TECHNOLOGY: 5
+    }
+  },
+  {
+    regNo: "384",
+    name: "Caasho Xasan Maxamuud Qaasim",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 31,
+      "اللغة العربية": 30,
+      XISAAB: 23,
+      ENGLISH: 32,
+      SOCIAL: 36,
+      SCIENCE: 35,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "385",
+    name: "Cabdi Xasan Maxamed Jaamac",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 29,
+      "اللغة العربية": 20,
+      XISAAB: 14,
+      ENGLISH: 23,
+      SOCIAL: 33,
+      SCIENCE: 35,
+      TECHNOLOGY: 22
+    }
+  },
+  {
+    regNo: "386",
+    name: "Cabdullaahi Isman Maxamuud Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 27,
+      "اللغة العربية": 25,
+      XISAAB: 19,
+      ENGLISH: 35,
+      SOCIAL: 39,
+      SCIENCE: 28,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "387",
+    name: "Cali Daahir Maxamuud Ismaan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 28,
+      "اللغة العربية": 29,
+      XISAAB: 32,
+      ENGLISH: 24,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "388",
+    name: "Cali Jimcaale Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 32,
+      "اللغة العربية": 29,
+      XISAAB: 16,
+      ENGLISH: 33,
+      SOCIAL: 9,
+      SCIENCE: 37,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "389",
+    name: "Dheyman Cabdi Xasan Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 31,
+      "اللغة العربية": 21,
+      XISAAB: 14,
+      ENGLISH: 15,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 18
+    }
+  },
+  {
+    regNo: "390",
+    name: "Faysal Axmed Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 20,
+      "اللغة العربية": 21,
+      XISAAB: 25,
+      ENGLISH: 34,
+      SOCIAL: 37,
+      SCIENCE: 37,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "391",
+    name: "Ikhlaas Cali Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 30,
+      "اللغة العربية": 30,
+      XISAAB: 25,
+      ENGLISH: 40,
+      SOCIAL: 40,
+      SCIENCE: 37,
+      TECHNOLOGY: 33
+    }
+  },
+  {
+    regNo: "392",
+    name: "Ikraan Maxamuud Nuur Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 27,
+      "اللغة العربية": 29,
+      XISAAB: 31,
+      ENGLISH: 21,
+      SOCIAL: 39,
+      SCIENCE: 29,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "393",
+    name: "Khadiijo Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 32,
+      "اللغة العربية": 32,
+      XISAAB: 14,
+      ENGLISH: 28,
+      SOCIAL: 37,
+      SCIENCE: 7,
+      TECHNOLOGY: 21
+    }
+  },
+  {
+    regNo: "394",
+    name: "Maa'ido C/llaahi Maxamuud Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 25,
+      "اللغة العربية": 29,
+      XISAAB: 21,
+      ENGLISH: 28,
+      SOCIAL: 36,
+      SCIENCE: 34,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "395",
+    name: "Maa'ido Muuse Maxamed Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 34,
+      "اللغة العربية": 24,
+      XISAAB: 15,
+      ENGLISH: 32,
+      SOCIAL: 36,
+      SCIENCE: 34,
+      TECHNOLOGY: 23
+    }
+  },
+  {
+    regNo: "396",
+    name: "Maa'ido Xasan Maalin Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 29,
+      "اللغة العربية": 23,
+      XISAAB: 21,
+      ENGLISH: 35,
+      SOCIAL: 40,
+      SCIENCE: 31,
+      TECHNOLOGY: 22
+    }
+  },
+  {
+    regNo: "397",
+    name: "Maandeeq Faarax Taakow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 39,
+      "اللغة العربية": 21,
+      XISAAB: 20,
+      ENGLISH: 26,
+      SOCIAL: 34,
+      SCIENCE: 37,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "398",
+    name: "Maqdis Xasan Maalin Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 25,
+      "اللغة العربية": 26,
+      XISAAB: 16,
+      ENGLISH: 21,
+      SOCIAL: 38,
+      SCIENCE: 24,
+      TECHNOLOGY: 29
+    }
+  },
+  {
+    regNo: "399",
+    name: "Maryan Cali Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 24,
+      "اللغة العربية": 30,
+      XISAAB: 26,
+      ENGLISH: 6,
+      SOCIAL: 32,
+      SCIENCE: 35,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "400",
+    name: "Maxamed Abuukar Jeylaani",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 27,
+      "اللغة العربية": 22,
+      XISAAB: 23,
+      ENGLISH: 23,
+      SOCIAL: 38,
+      SCIENCE: 34,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "401",
+    name: "Maysar Axmed Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 35,
+      "اللغة العربية": 32,
+      XISAAB: 25,
+      ENGLISH: 33,
+      SOCIAL: 38,
+      SCIENCE: 32,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "402",
+    name: "Muhanad Ismaacil Axmed Nuur",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 31,
+      "اللغة العربية": 25,
+      XISAAB: 26,
+      ENGLISH: 38,
+      SOCIAL: 34,
+      SCIENCE: 37,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "403",
+    name: "Muno Ismaaciil Da Uud Cadaw",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 28,
+      "اللغة العربية": 25,
+      XISAAB: 28,
+      ENGLISH: 38,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "404",
+    name: "Mustaf Barre Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 14,
+      SOOMAALI: 30,
+      "اللغة العربية": 16,
+      XISAAB: 22,
+      ENGLISH: 33,
+      SOCIAL: 35,
+      SCIENCE: 34,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "405",
+    name: "Nasro Cusmaan Cadaan Suubiye",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 33,
+      "اللغة العربية": 24,
+      XISAAB: 19,
+      ENGLISH: 22,
+      SOCIAL: 40,
+      SCIENCE: 29,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "406",
+    name: "Nasteexo Daahir Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 25,
+      "اللغة العربية": 29,
+      XISAAB: 24,
+      ENGLISH: 25,
+      SOCIAL: 37,
+      SCIENCE: 37,
+      TECHNOLOGY: 7
+    }
+  },
+  {
+    regNo: "407",
+    name: "Raxmo Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 31,
+      SOOMAALI: 31,
+      "اللغة العربية": 30,
+      XISAAB: 16,
+      ENGLISH: 26,
+      SOCIAL: 38,
+      SCIENCE: 34,
+      TECHNOLOGY: 9
+    }
+  },
+  {
+    regNo: "408",
+    name: "Sahro Jeelle Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 30,
+      "اللغة العربية": 29,
+      XISAAB: 28,
+      ENGLISH: 32,
+      SOCIAL: 36,
+      SCIENCE: 34,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "409",
+    name: "Shukri Geeyseey Caddow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 32,
+      "اللغة العربية": 32,
+      XISAAB: 30,
+      ENGLISH: 32,
+      SOCIAL: 31,
+      SCIENCE: 37,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "410",
+    name: "Xasan Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 32,
+      "اللغة العربية": 35,
+      XISAAB: 16,
+      ENGLISH: 23,
+      SOCIAL: 40,
+      SCIENCE: 30,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "411",
+    name: "Xasan Nuux Ibraahim Mocow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 26,
+      "اللغة العربية": 27,
+      XISAAB: 20,
+      ENGLISH: 34,
+      SOCIAL: 40,
+      SCIENCE: 34,
+      TECHNOLOGY: 4
+    }
+  },
+  {
+    regNo: "412",
+    name: "Xasan Shiiq Muuse Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 34,
+      "اللغة العربية": 26,
+      XISAAB: 21,
+      ENGLISH: 20,
+      SOCIAL: 40,
+      SCIENCE: 37,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "413",
+    name: "Xuseen Busuri Suufi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 20,
+      "اللغة العربية": 25,
+      XISAAB: 19,
+      ENGLISH: 28,
+      SOCIAL: 37,
+      SCIENCE: 27,
+      TECHNOLOGY: 7
+    }
+  },
+  {
+    regNo: "414",
+    name: "Yaasiin Cabdi Malik Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 16,
+      SOOMAALI: 22,
+      "اللغة العربية": 23,
+      XISAAB: 19,
+      ENGLISH: 33,
+      SOCIAL: 39,
+      SCIENCE: 34,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "415",
+    name: "Yaxye Cabdi Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 5,
+      "اللغة العربية": 27,
+      XISAAB: 18,
+      ENGLISH: 22,
+      SOCIAL: 39,
+      SCIENCE: 10,
+      TECHNOLOGY: 8
+    }
+  },
+  {
+    regNo: "416",
+    name: "Bashir Geeysey Caddow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 18,
+      "اللغة العربية": 25,
+      XISAAB: 12,
+      ENGLISH: 24,
+      SOCIAL: 39,
+      SCIENCE: 5,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "417",
+    name: "C/qaadir Xasan Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 27,
+      "اللغة العربية": 18,
+      XISAAB: 13,
+      ENGLISH: 33,
+      SOCIAL: 27,
+      SCIENCE: 37,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "418",
+    name: "Nuuro Jimcaale Xuseen",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 24,
+      "اللغة العربية": 21,
+      XISAAB: 18,
+      ENGLISH: 18,
+      SOCIAL: 22,
+      SCIENCE: 21,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "419",
+    name: "Aniso Cali Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 35,
+      "اللغة العربية": 25,
+      XISAAB: 31,
+      ENGLISH: 31,
+      SOCIAL: 31,
+      SCIENCE: 22,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "420",
+    name: "Axmed Cabdullaahi Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 37,
+      "اللغة العربية": 19,
+      XISAAB: 36,
+      ENGLISH: 37,
+      SOCIAL: 40,
+      SCIENCE: 39,
+      TECHNOLOGY: 14
+    }
+  },
+  {
+    regNo: "421",
+    name: "Axmed Maxamed Isaaq",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 31,
+      SOOMAALI: 34,
+      "اللغة العربية": 36,
+      XISAAB: 37,
+      ENGLISH: 16,
+      SOCIAL: 34,
+      SCIENCE: 22,
+      TECHNOLOGY: 36
+    }
+  },
+  {
+    regNo: "422",
+    name: "Caasho Maxamed Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 35,
+      "اللغة العربية": 31,
+      XISAAB: 23,
+      ENGLISH: 13,
+      SOCIAL: 28,
+      SCIENCE: 24,
+      TECHNOLOGY: 23
+    }
+  },
+  {
+    regNo: "423",
+    name: "Cabdirisaaq Ibraahim Cumar",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 7,
+      "اللغة العربية": 12,
+      XISAAB: 15,
+      ENGLISH: 21,
+      SOCIAL: 40,
+      SCIENCE: 24,
+      TECHNOLOGY: 15
+    }
+  },
+  {
+    regNo: "424",
+    name: "Cabdullaahi Cali Nuur",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 18,
+      SOOMAALI: 31,
+      "اللغة العربية": 24,
+      XISAAB: 23,
+      ENGLISH: 25,
+      SOCIAL: 31,
+      SCIENCE: 30,
+      TECHNOLOGY: 34
+    }
+  },
+  {
+    regNo: "425",
+    name: "Cabdulqaadir Cumar Nuur",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 35,
+      "اللغة العربية": 38,
+      XISAAB: 30,
+      ENGLISH: 34,
+      SOCIAL: 34,
+      SCIENCE: 39,
+      TECHNOLOGY: 35
+    }
+  },
+  {
+    regNo: "426",
+    name: "Cali Xasan Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 18,
+      SOOMAALI: 21,
+      "اللغة العربية": 17,
+      XISAAB: 6,
+      ENGLISH: 23,
+      SOCIAL: 16,
+      SCIENCE: 16,
+      TECHNOLOGY: 14
+    }
+  },
+  {
+    regNo: "427",
+    name: "Fartuun Axmed Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 34,
+      "اللغة العربية": 19,
+      XISAAB: 31,
+      ENGLISH: 30,
+      SOCIAL: 27,
+      SCIENCE: 6,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "428",
+    name: "Fartuun Cabdullahi Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 35,
+      "اللغة العربية": 27,
+      XISAAB: 28,
+      ENGLISH: 31,
+      SOCIAL: 27,
+      SCIENCE: 23,
+      TECHNOLOGY: 27
+    }
+  },
+  {
+    regNo: "429",
+    name: "Farxiyo Maxamuud Cosobow",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 34,
+      "اللغة العربية": 29,
+      XISAAB: 22,
+      ENGLISH: 31,
+      SOCIAL: 35,
+      SCIENCE: 29,
+      TECHNOLOGY: 22
+    }
+  },
+  {
+    regNo: "430",
+    name: "Fu'aad Cabdi Malaaq",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 27,
+      "اللغة العربية": 11,
+      XISAAB: 6,
+      ENGLISH: 18,
+      SOCIAL: 23,
+      SCIENCE: 30,
+      TECHNOLOGY: 34
+    }
+  },
+  {
+    regNo: "431",
+    name: "Khadiijo Cumar Cabdulle",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 33,
+      "اللغة العربية": 25,
+      XISAAB: 9,
+      ENGLISH: 30,
+      SOCIAL: 22,
+      SCIENCE: 28,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "432",
+    name: "Khadiijo Yuusuf Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 33,
+      "اللغة العربية": 32,
+      XISAAB: 10,
+      ENGLISH: 32,
+      SOCIAL: 26,
+      SCIENCE: 28,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "433",
+    name: "Leylo Cali Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 9,
+      SOOMAALI: 32,
+      "اللغة العربية": 25,
+      XISAAB: 29,
+      ENGLISH: 28,
+      SOCIAL: 31,
+      SCIENCE: 24,
+      TECHNOLOGY: 34
+    }
+  },
+  {
+    regNo: "434",
+    name: "Zakariye Cabdiraxmaan Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 30,
+      SOOMAALI: 38,
+      "اللغة العربية": 28,
+      XISAAB: 33,
+      ENGLISH: 37,
+      SOCIAL: 24,
+      SCIENCE: 40,
+      TECHNOLOGY: 39
+    }
+  },
+  {
+    regNo: "435",
+    name: "Maandeeqo Yuusuf Cadaan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 35,
+      "اللغة العربية": 21,
+      XISAAB: 18,
+      ENGLISH: 33,
+      SOCIAL: 32,
+      SCIENCE: 27,
+      TECHNOLOGY: 21
+    }
+  },
+  {
+    regNo: "436",
+    name: "Mahad Maxamed Shire",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 16,
+      SOOMAALI: 17,
+      "اللغة العربية": 6,
+      XISAAB: 28,
+      ENGLISH: 23,
+      SOCIAL: 16,
+      SCIENCE: 14,
+      TECHNOLOGY: 19
+    }
+  },
+  {
+    regNo: "437",
+    name: "Maryan Cumar Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 9,
+      "اللغة العربية": 25,
+      XISAAB: 21,
+      ENGLISH: 13,
+      SOCIAL: 22,
+      SCIENCE: 27,
+      TECHNOLOGY: 11
+    }
+  },
+  {
+    regNo: "438",
+    name: "Mulki Cabdiraxmaan Jeylaani",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 20,
+      SOOMAALI: 31,
+      "اللغة العربية": 15,
+      XISAAB: 21,
+      ENGLISH: 33,
+      SOCIAL: 31,
+      SCIENCE: 22,
+      TECHNOLOGY: 19
+    }
+  },
+  {
+    regNo: "439",
+    name: "Muqtaar Cabdullaahi Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 12,
+      "اللغة العربية": 18,
+      XISAAB: 6,
+      ENGLISH: 23,
+      SOCIAL: 34,
+      SCIENCE: 39,
+      TECHNOLOGY: 5
+    }
+  },
+  {
+    regNo: "440",
+    name: "Muxudiin Maxamed Geedi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 26,
+      "اللغة العربية": 12,
+      XISAAB: 8,
+      ENGLISH: 13,
+      SOCIAL: 20,
+      SCIENCE: 21,
+      TECHNOLOGY: 32
+    }
+  },
+  {
+    regNo: "441",
+    name: "Nasro Daahir Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 14,
+      SOOMAALI: 26,
+      "اللغة العربية": 25,
+      XISAAB: 28,
+      ENGLISH: 29,
+      SOCIAL: 25,
+      SCIENCE: 30,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "442",
+    name: "Nasteexo Cumar Nuur",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 35,
+      "اللغة العربية": 29,
+      XISAAB: 26,
+      ENGLISH: 30,
+      SOCIAL: 31,
+      SCIENCE: 28,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "443",
+    name: "Nasteexo Yuusuf Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 17,
+      SOOMAALI: 29,
+      "اللغة العربية": 25,
+      XISAAB: 23,
+      ENGLISH: 13,
+      SOCIAL: 29,
+      SCIENCE: 26,
+      TECHNOLOGY: 27
+    }
+  },
+  {
+    regNo: "444",
+    name: "Nuurdoog Ibraahim Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 28,
+      "اللغة العربية": 17,
+      XISAAB: 27,
+      ENGLISH: 23,
+      SOCIAL: 25,
+      SCIENCE: 27,
+      TECHNOLOGY: 35
+    }
+  },
+  {
+    regNo: "445",
+    name: "Zakariye Maxamed Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 27,
+      "اللغة العربية": 30,
+      XISAAB: 37,
+      ENGLISH: 24,
+      SOCIAL: 22,
+      SCIENCE: 27,
+      TECHNOLOGY: 34
+    }
+  },
+  {
+    regNo: "446",
+    name: "Ramlo Faarax Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 23,
+      "اللغة العربية": 31,
+      XISAAB: 7,
+      ENGLISH: 32,
+      SOCIAL: 22,
+      SCIENCE: 21,
+      TECHNOLOGY: 15
+    }
+  },
+  {
+    regNo: "447",
+    name: "Saalax Xasan Cali",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 31,
+      SOOMAALI: 35,
+      "اللغة العربية": 24,
+      XISAAB: 33,
+      ENGLISH: 40,
+      SOCIAL: 38,
+      SCIENCE: 36,
+      TECHNOLOGY: 37
+    }
+  },
+  {
+    regNo: "448",
+    name: "Shukri Cabdullahi Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 31,
+      "اللغة العربية": 32,
+      XISAAB: 8,
+      ENGLISH: 30,
+      SOCIAL: 28,
+      SCIENCE: 38,
+      TECHNOLOGY: 13
+    }
+  },
+  {
+    regNo: "449",
+    name: "Siciid Cusmaan Caddaan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 16,
+      SOOMAALI: 26,
+      "اللغة العربية": 16,
+      XISAAB: 6,
+      ENGLISH: 17,
+      SOCIAL: 39,
+      SCIENCE: 28,
+      TECHNOLOGY: 19
+    }
+  },
+  {
+    regNo: "450",
+    name: "Xaawo Cali Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 26,
+      "اللغة العربية": 22,
+      XISAAB: 19,
+      ENGLISH: 32,
+      SOCIAL: 23,
+      SCIENCE: 25,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "451",
+    name: "Xaliimo Maxamed Cumar",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 33,
+      "اللغة العربية": 17,
+      XISAAB: 26,
+      ENGLISH: 28,
+      SOCIAL: 37,
+      SCIENCE: 18,
+      TECHNOLOGY: 4
+    }
+  },
+  {
+    regNo: "452",
+    name: "Xamdi Cali Xuseyn",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 36,
+      "اللغة العربية": 31,
+      XISAAB: 34,
+      ENGLISH: 34,
+      SOCIAL: 34,
+      SCIENCE: 40,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "453",
+    name: "Xannaan Cali Caraay",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 35,
+      "اللغة العربية": 25,
+      XISAAB: 39,
+      ENGLISH: 40,
+      SOCIAL: 34,
+      SCIENCE: 26,
+      TECHNOLOGY: 39
+    }
+  },
+  {
+    regNo: "454",
+    name: "Yaxye Yuusuf Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 31,
+      SOOMAALI: 37,
+      "اللغة العربية": 38,
+      XISAAB: 38,
+      ENGLISH: 38,
+      SOCIAL: 34,
+      SCIENCE: 37,
+      TECHNOLOGY: 36
+    }
+  },
+  {
+    regNo: "455",
+    name: "C/raxmaan Xasan",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 32,
+      "اللغة العربية": 31,
+      XISAAB: 29,
+      ENGLISH: 36,
+      SOCIAL: 34,
+      SCIENCE: 38,
+      TECHNOLOGY: 15
+    }
+  },
+  {
+    regNo: "456",
+    name: "Cabdiraxmaan Axmed Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 37,
+      "اللغة العربية": 28,
+      XISAAB: 40,
+      ENGLISH: 37,
+      SOCIAL: 37,
+      SCIENCE: 37,
+      TECHNOLOGY: 39
+    }
+  },
+  {
+    regNo: "457",
+    name: "Maa'iddo Cabdi",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 33,
+      "اللغة العربية": 14,
+      XISAAB: 18,
+      ENGLISH: 30,
+      SOCIAL: 34,
+      SCIENCE: 17,
+      TECHNOLOGY: 18
+    }
+  },
+  {
+    regNo: "458",
+    name: "Maxamed Maxamuud Axmed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 16,
+      SOOMAALI: 30,
+      "اللغة العربية": 20,
+      XISAAB: 7,
+      ENGLISH: 21,
+      SOCIAL: 25,
+      SCIENCE: 11,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "459",
+    name: "Khaalid Bashiir Maxamed",
+    motherName: "Not Provided",
+    class: "Class 6aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 9,
+      SOOMAALI: 0,
+      "اللغة العربية": 12,
+      XISAAB: 16,
+      ENGLISH: 11,
+      SOCIAL: 15,
+      SCIENCE: 0,
+      TECHNOLOGY: 0
+    }
+  },
+  {
+    regNo: "460",
+    name: "Adno Muuse Maxamed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 36,
+      "اللغة العربية": 9,
+      XISAAB: 28,
+      ENGLISH: 24,
+      SOCIAL: 29,
+      SCIENCE: 16,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "461",
+    name: "Amiin Cabdi Calasow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 30,
+      "اللغة العربية": 6,
+      XISAAB: 24,
+      ENGLISH: 26,
+      SOCIAL: 32,
+      SCIENCE: 19,
+      TECHNOLOGY: 21
+    }
+  },
+  {
+    regNo: "462",
+    name: "Anfac Maxamed Cali",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 30,
+      "اللغة العربية": 27,
+      XISAAB: 36,
+      ENGLISH: 35,
+      SOCIAL: 40,
+      SCIENCE: 25,
+      TECHNOLOGY: 38
+    }
+  },
+  {
+    regNo: "463",
+    name: "Aniso Cabdi Calasow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 37,
+      "اللغة العربية": 17,
+      XISAAB: 40,
+      ENGLISH: 40,
+      SOCIAL: 40,
+      SCIENCE: 28,
+      TECHNOLOGY: 39
+    }
+  },
+  {
+    regNo: "464",
+    name: "Aniso Cabdullaahi Salaad",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 36,
+      "اللغة العربية": 16,
+      XISAAB: 10,
+      ENGLISH: 40,
+      SOCIAL: 37,
+      SCIENCE: 13,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "465",
+    name: "Axlaan Cali Cumar",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 18,
+      "اللغة العربية": 5,
+      XISAAB: 26,
+      ENGLISH: 25,
+      SOCIAL: 22,
+      SCIENCE: 6,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "466",
+    name: "Axmad Cabdullaahi Axmed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 32,
+      "اللغة العربية": 6,
+      XISAAB: 23,
+      ENGLISH: 25,
+      SOCIAL: 31,
+      SCIENCE: 17,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "467",
+    name: "Ayaanle Cabdi Calasow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 25,
+      "اللغة العربية": 7,
+      XISAAB: 23,
+      ENGLISH: 10,
+      SOCIAL: 36,
+      SCIENCE: 9,
+      TECHNOLOGY: 30
+    }
+  },
+  {
+    regNo: "468",
+    name: "Balqiiso Cali Cumar",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 38,
+      "اللغة العربية": 15,
+      XISAAB: 26,
+      ENGLISH: 36,
+      SOCIAL: 21,
+      SCIENCE: 11,
+      TECHNOLOGY: 23
+    }
+  },
+  {
+    regNo: "469",
+    name: "Bilqer Axmad Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 17,
+      SOOMAALI: 23,
+      "اللغة العربية": 6,
+      XISAAB: 36,
+      ENGLISH: 40,
+      SOCIAL: 37,
+      SCIENCE: 22,
+      TECHNOLOGY: 37
+    }
+  },
+  {
+    regNo: "470",
+    name: "Caasho Cabdullaahi Carrale",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 36,
+      "اللغة العربية": 10,
+      XISAAB: 29,
+      ENGLISH: 23,
+      SOCIAL: 40,
+      SCIENCE: 10,
+      TECHNOLOGY: 23
+    }
+  },
+  {
+    regNo: "471",
+    name: "Caasho Cali Shamcuun",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 32,
+      "اللغة العربية": 19,
+      XISAAB: 24,
+      ENGLISH: 38,
+      SOCIAL: 10,
+      SCIENCE: 34,
+      TECHNOLOGY: 34
+    }
+  },
+  {
+    regNo: "472",
+    name: "Caasho Maxamed Cumar",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 16,
+      SOOMAALI: 27,
+      "اللغة العربية": 6,
+      XISAAB: 25,
+      ENGLISH: 13,
+      SOCIAL: 7,
+      SCIENCE: 7,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "473",
+    name: "Cabdi Careys Siicow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 7,
+      SOOMAALI: 19,
+      "اللغة العربية": 0,
+      XISAAB: 10,
+      ENGLISH: 9,
+      SOCIAL: 8,
+      SCIENCE: 9,
+      TECHNOLOGY: 10
+    }
+  },
+  {
+    regNo: "474",
+    name: "Cabdi Jilacow Cabdulle",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 28,
+      "اللغة العربية": 19,
+      XISAAB: 23,
+      ENGLISH: 25,
+      SOCIAL: 38,
+      SCIENCE: 24,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "475",
+    name: "Axmed Muxudiin Maxamad",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 29,
+      "اللغة العربية": 6,
+      XISAAB: 28,
+      ENGLISH: 25,
+      SOCIAL: 30,
+      SCIENCE: 10,
+      TECHNOLOGY: 16
+    }
+  },
+  {
+    regNo: "476",
+    name: "Cabdi Naasir Shiiq Muuse Maxamed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 20,
+      "اللغة العربية": 7,
+      XISAAB: 26,
+      ENGLISH: 30,
+      SOCIAL: 19,
+      SCIENCE: 8,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "477",
+    name: "Cabdi Raqiib Maxamed Cabdullaahi",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 12,
+      "اللغة العربية": 9,
+      XISAAB: 24,
+      ENGLISH: 7,
+      SOCIAL: 24,
+      SCIENCE: 10,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "478",
+    name: "C/raxmaan Taakow Ibraahim",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 10,
+      "اللغة العربية": 1,
+      XISAAB: 9,
+      ENGLISH: 11,
+      SOCIAL: 36,
+      SCIENCE: 9,
+      TECHNOLOGY: 29
+    }
+  },
+  {
+    regNo: "479",
+    name: "Cabdi Risaaq Xuseen Yuusuf",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 5,
+      SOOMAALI: 17,
+      "اللغة العربية": 6,
+      XISAAB: 22,
+      ENGLISH: 10,
+      SOCIAL: 9,
+      SCIENCE: 6,
+      TECHNOLOGY: 5
+    }
+  },
+  {
+    regNo: "480",
+    name: "Cabdi Salaan Axmed Maxamed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 27,
+      SOOMAALI: 30,
+      "اللغة العربية": 12,
+      XISAAB: 28,
+      ENGLISH: 27,
+      SOCIAL: 21,
+      SCIENCE: 7,
+      TECHNOLOGY: 17
+    }
+  },
+  {
+    regNo: "481",
+    name: "Cabdulqaadir Muuse Maxamed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 24,
+      SOOMAALI: 31,
+      "اللغة العربية": 12,
+      XISAAB: 25,
+      ENGLISH: 16,
+      SOCIAL: 31,
+      SCIENCE: 11,
+      TECHNOLOGY: 26
+    }
+  },
+  {
+    regNo: "482",
+    name: "Canab Maxamed Caddow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 27,
+      "اللغة العربية": 3,
+      XISAAB: 35,
+      ENGLISH: 26,
+      SOCIAL: 40,
+      SCIENCE: 19,
+      TECHNOLOGY: 32
+    }
+  },
+  {
+    regNo: "483",
+    name: "Daahir Careys Siicow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 13,
+      "اللغة العربية": 1,
+      XISAAB: 6,
+      ENGLISH: 6,
+      SOCIAL: 30,
+      SCIENCE: 8,
+      TECHNOLOGY: 4
+    }
+  },
+  {
+    regNo: "484",
+    name: "Maxamed Abuukar Axmed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 31,
+      "اللغة العربية": 0,
+      XISAAB: 27,
+      ENGLISH: 18,
+      SOCIAL: 36,
+      SCIENCE: 16,
+      TECHNOLOGY: 18
+    }
+  },
+  {
+    regNo: "485",
+    name: "Duniyo Maxamed Cali",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 39,
+      "اللغة العربية": 9,
+      XISAAB: 27,
+      ENGLISH: 26,
+      SOCIAL: 24,
+      SCIENCE: 12,
+      TECHNOLOGY: 35
+    }
+  },
+  {
+    regNo: "486",
+    name: "Yaxye Ismaciil Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 36,
+      SOOMAALI: 5,
+      "اللغة العربية": 7,
+      XISAAB: 37,
+      ENGLISH: 33,
+      SOCIAL: 37,
+      SCIENCE: 31,
+      TECHNOLOGY: 39
+    }
+  },
+  {
+    regNo: "487",
+    name: "Farxiyo Careys Siicow",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 4,
+      SOOMAALI: 34,
+      "اللغة العربية": 0,
+      XISAAB: 7,
+      ENGLISH: 6,
+      SOCIAL: 10,
+      SCIENCE: 8,
+      TECHNOLOGY: 4
+    }
+  },
+  {
+    regNo: "488",
+    name: "Jaamac Maxamed Ibraahim",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 31,
+      "اللغة العربية": 10,
+      XISAAB: 6,
+      ENGLISH: 8,
+      SOCIAL: 34,
+      SCIENCE: 8,
+      TECHNOLOGY: 7
+    }
+  },
+  {
+    regNo: "489",
+    name: "Liibaan Muuse Xasan",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 9,
+      "اللغة العربية": 9,
+      XISAAB: 7,
+      ENGLISH: 7,
+      SOCIAL: 30,
+      SCIENCE: 12,
+      TECHNOLOGY: 23
+    }
+  },
+  {
+    regNo: "490",
+    name: "Axmed Farxaan Maxamud",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 18,
+      SOOMAALI: 30,
+      "اللغة العربية": 18,
+      XISAAB: 16,
+      ENGLISH: 18,
+      SOCIAL: 18,
+      SCIENCE: 0,
+      TECHNOLOGY: 10
+    }
+  },
+  {
+    regNo: "491",
+    name: "Shankaron Isxaaq Cali",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 18,
+      SOOMAALI: 27,
+      "اللغة العربية": 18,
+      XISAAB: 10,
+      ENGLISH: 24,
+      SOCIAL: 27,
+      SCIENCE: 3,
+      TECHNOLOGY: 30
+    }
+  },
+  {
+    regNo: "492",
+    name: "Maxamed M. Daahir",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 30,
+      "اللغة العربية": 21,
+      XISAAB: 20,
+      ENGLISH: 10,
+      SOCIAL: 27,
+      SCIENCE: 0,
+      TECHNOLOGY: 18
+    }
+  },
+  {
+    regNo: "493",
+    name: "Marwaan Yuusuf Nuur",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 6,
+      "اللغة العربية": 26,
+      XISAAB: 30,
+      ENGLISH: 29,
+      SOCIAL: 38,
+      SCIENCE: 28,
+      TECHNOLOGY: 33
+    }
+  },
+  {
+    regNo: "494",
+    name: "Maryan Awees Xuseen",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 28,
+      "اللغة العربية": 15,
+      XISAAB: 24,
+      ENGLISH: 23,
+      SOCIAL: 35,
+      SCIENCE: 6,
+      TECHNOLOGY: 24
+    }
+  },
+  {
+    regNo: "495",
+    name: "Maxamed Cabdullaahi Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 23,
+      SOOMAALI: 4,
+      "اللغة العربية": 23,
+      XISAAB: 26,
+      ENGLISH: 39,
+      SOCIAL: 24,
+      SCIENCE: 9,
+      TECHNOLOGY: 31
+    }
+  },
+  {
+    regNo: "496",
+    name: "Muscab Maxamed Xasan",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 6,
+      SOOMAALI: 30,
+      "اللغة العربية": 2,
+      XISAAB: 8,
+      ENGLISH: 9,
+      SOCIAL: 6,
+      SCIENCE: 6,
+      TECHNOLOGY: 3
+    }
+  },
+  {
+    regNo: "497",
+    name: "Nasteexo Maxamed Yuusuf",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 22,
+      "اللغة العربية": 16,
+      XISAAB: 9,
+      ENGLISH: 10,
+      SOCIAL: 30,
+      SCIENCE: 14,
+      TECHNOLOGY: 20
+    }
+  },
+  {
+    regNo: "498",
+    name: "Cali Nuur Cali",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 35,
+      "اللغة العربية": 6,
+      XISAAB: 19,
+      ENGLISH: 5,
+      SOCIAL: 30,
+      SCIENCE: 23,
+      TECHNOLOGY: 5
+    }
+  },
+  {
+    regNo: "499",
+    name: "Niciimo Cusmaan Ibraahim",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 18,
+      SOOMAALI: 28,
+      "اللغة العربية": 6,
+      XISAAB: 0,
+      ENGLISH: 38,
+      SOCIAL: 40,
+      SCIENCE: 13,
+      TECHNOLOGY: 21
+    }
+  },
+  {
+    regNo: "500",
+    name: "Niciimo Maxamed Gacal",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 30,
+      "اللغة العربية": 24,
+      XISAAB: 23,
+      ENGLISH: 37,
+      SOCIAL: 34,
+      SCIENCE: 19,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "501",
+    name: "Qaalid Cabdiraxmaan Cabdulqaadir",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 21,
+      SOOMAALI: 32,
+      "اللغة العربية": 14,
+      XISAAB: 37,
+      ENGLISH: 15,
+      SOCIAL: 40,
+      SCIENCE: 16,
+      TECHNOLOGY: 33
+    }
+  },
+  {
+    regNo: "502",
+    name: "Raxmo Cusmaan Maxamed",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 13,
+      SOOMAALI: 36,
+      "اللغة العربية": 6,
+      XISAAB: 20,
+      ENGLISH: 23,
+      SOCIAL: 37,
+      SCIENCE: 9,
+      TECHNOLOGY: 30
+    }
+  },
+  {
+    regNo: "503",
+    name: "Raxmo Daa'ud Geedi",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 19,
+      SOOMAALI: 36,
+      "اللغة العربية": 17,
+      XISAAB: 24,
+      ENGLISH: 35,
+      SOCIAL: 40,
+      SCIENCE: 16,
+      TECHNOLOGY: 28
+    }
+  },
+  {
+    regNo: "504",
+    name: "Rayaan Yuusuf Nuur",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 24,
+      "اللغة العربية": 29,
+      XISAAB: 30,
+      ENGLISH: 34,
+      SOCIAL: 39,
+      SCIENCE: 25,
+      TECHNOLOGY: 38
+    }
+  },
+  {
+    regNo: "505",
+    name: "Salmaan Abuukar Maxamuud",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 22,
+      SOOMAALI: 12,
+      "اللغة العربية": 16,
+      XISAAB: 38,
+      ENGLISH: 8,
+      SOCIAL: 33,
+      SCIENCE: 11,
+      TECHNOLOGY: 30
+    }
+  },
+  {
+    regNo: "506",
+    name: "Shukri Cabdi Yuusuf",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 0,
+      SOOMAALI: 31,
+      "اللغة العربية": 6,
+      XISAAB: 35,
+      ENGLISH: 23,
+      SOCIAL: 0,
+      SCIENCE: 10,
+      TECHNOLOGY: 14
+    }
+  },
+  {
+    regNo: "507",
+    name: "Shukri Cusmaan Xasan",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 33,
+      SOOMAALI: 31,
+      "اللغة العربية": 17,
+      XISAAB: 8,
+      ENGLISH: 36,
+      SOCIAL: 20,
+      SCIENCE: 16,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "508",
+    name: "Maryan C/qaadir Ibraahim",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 17,
+      SOOMAALI: 11,
+      "اللغة العربية": 0,
+      XISAAB: 25,
+      ENGLISH: 30,
+      SOCIAL: 30,
+      SCIENCE: 10,
+      TECHNOLOGY: 30
+    }
+  },
+  {
+    regNo: "509",
+    name: "Sumayo Abuukar Cali",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 15,
+      SOOMAALI: 37,
+      "اللغة العربية": 5,
+      XISAAB: 9,
+      ENGLISH: 14,
+      SOCIAL: 15,
+      SCIENCE: 6,
+      TECHNOLOGY: 25
+    }
+  },
+  {
+    regNo: "510",
+    name: "Sumayo Cabdiraxmaan Xasan",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 28,
+      SOOMAALI: 36,
+      "اللغة العربية": 26,
+      XISAAB: 25,
+      ENGLISH: 28,
+      SOCIAL: 40,
+      SCIENCE: 25,
+      TECHNOLOGY: 38
+    }
+  },
+  {
+    regNo: "511",
+    name: "Sumayo Cali Cabdulle",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 26,
+      SOOMAALI: 34,
+      "اللغة العربية": 17,
+      XISAAB: 36,
+      ENGLISH: 38,
+      SOCIAL: 36,
+      SCIENCE: 28,
+      TECHNOLOGY: 38
+    }
+  },
+  {
+    regNo: "512",
+    name: "Xaawo Cabbaas Warsame",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 36,
+      SOOMAALI: 6,
+      "اللغة العربية": 20,
+      XISAAB: 39,
+      ENGLISH: 35,
+      SOCIAL: 31,
+      SCIENCE: 13,
+      TECHNOLOGY: 33
+    }
+  },
+  {
+    regNo: "513",
+    name: "Maxamed Muqtaar Muuse",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 6,
+      SOOMAALI: 26,
+      "اللغة العربية": 5,
+      XISAAB: 16,
+      ENGLISH: 6,
+      SOCIAL: 17,
+      SCIENCE: 3,
+      TECHNOLOGY: 6
+    }
+  },
+  {
+    regNo: "514",
+    name: "Zakariye Ismaciil Aadan",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 29,
+      SOOMAALI: 36,
+      "اللغة العربية": 26,
+      XISAAB: 9,
+      ENGLISH: 5,
+      SOCIAL: 37,
+      SCIENCE: 29,
+      TECHNOLOGY: 30
+    }
+  },
+  {
+    regNo: "515",
+    name: "Zamzam Aadan Cusmaan",
+    motherName: "Not Provided",
+    class: "Class 5aad",
+    year: "2025-2026",
+    results: {
+      "التربية الإسلامية": 25,
+      SOOMAALI: 0,
+      "اللغة العربية": 10,
+      XISAAB: 24,
+      ENGLISH: 34,
+      SOCIAL: 40,
+      SCIENCE: 14,
+      TECHNOLOGY: 5
+        },
+      }
+    ];
+
+    // Function to get letter grade based on percentage
+    function getLetterGrade(percentage) {
+      if (percentage >= 95) return { grade: "A+", class: "grade-A" };
+      if (percentage >= 90) return { grade: "A", class: "grade-A" };
+      if (percentage >= 85) return { grade: "A-", class: "grade-A" };
+      if (percentage >= 80) return { grade: "B+", class: "grade-B" };
+      if (percentage >= 75) return { grade: "B", class: "grade-B" };
+      if (percentage >= 70) return { grade: "B-", class: "grade-B" };
+      if (percentage >= 65) return { grade: "C+", class: "grade-C" };
+      if (percentage >= 60) return { grade: "C", class: "grade-C" };
+      if (percentage >= 55) return { grade: "C-", class: "grade-C" };
+      if (percentage >= 50) return { grade: "D", class: "grade-D" };
+      if (percentage >= 40) return { grade: "E", class: "grade-F" };
+      return { grade: "F", class: "grade-F" };
+    }
+
+    function getComment(percentage) {
+        if (percentage >= 95) return "Heer Sare 1aad";
+        if (percentage >= 90) return "Heer Sare 2aad";
+        if (percentage >= 85) return "Aad u Wanaagsan 1";
+        if (percentage >= 80) return "Aad u Wanaagsan 2";
+        if (percentage >= 75) return "Wanaagsan 1";
+        if (percentage >= 70) return "Wanaagsan 2";
+        if (percentage >= 65) return "Dhexdhexaad 1";
+        if (percentage >= 60) return "Dhexdhexaad 2";
+        if (percentage >= 50) return "Celcelis";
+        return "Liita";
+    }
+
+    function showResult() {
+      const reg = document.getElementById('regInput').value.trim();
+      const student = students.find((s) => s.regNo === reg);
+
+      const printBtn = document.getElementById('printBtn');
+      if (!student) {
+        document.getElementById('result').innerHTML = `
+          <div style="background: #ffeeee; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px solid #ffcccc;">
+            <p style="color: #d32f2f; font-weight: bold; font-size: 14px;">
+             <i class="fas fa-exclamation-circle"></i> Ma jidho tira-taxaneha aad gelisay. Fadlan iska hubi oo isku day mar kale.
+            </p>
+          </div>`;
+        printBtn.style.display = 'none';
+        return;
+      }
+
+      const subjects = Object.keys(student.results);
+      const scores = Object.values(student.results);
+      const total = scores.reduce((a, b) => a + b, 0);
+      
+      // Calculate percentage - for multiple subjects, each out of 22
+      const maxTotal = subjects.length * 40.00; // Each subject maximum is 40
+      const percentage = (total / maxTotal) * 100;
+      
+      // Determine pass/fail status (11+ points per subject = 50% or higher per subject)
+      // Average score per subject must be 11 or higher
+      const avgScorePerSubject = total / subjects.length;
+      const status = avgScorePerSubject >= 20 ? 'Gudbay' : 'Haray';
+      const statusClass = avgScorePerSubject >= 20 ? 'pass' : 'fail';
+      
+      // Get overall letter grade based on percentage
+      const overallLetterGrade = getLetterGrade(percentage);
+
+      // Determine custom comment based on performance
+      let customComment = studentComments[student.regNo] || "";
+      if (!customComment) {
+          if (percentage >= 80) {
+              customComment = "Masha Allah! Waxaad gaadhay heer sare oo caddeyn u ah dedaalkaaga, juhdigaaga, kartidaada, firfircoonidaada iyo waxqabadkaaga wanaagsan.✨💐 Rabitaanka noloshaada Alle raxmadiisa ha kugu siiyo.";
+          } else if (percentage >= 70) {
+              customComment = "waxaad si wanaagsan u muujisay faham qoto dheer oo ku saabsan maadooyin dhowr ah. Haddii aad xoogga saarto meelaha aad caqabada kala kulanto, waxaad gaadhi doontaa heerar ka sarreeya halka aad hadda joogto.🍁 Rabitaanka noloshaada Alle raxmadiisa ha kugu siiyo.";
+          } else if (percentage >= 50) {
+              customComment = "waxaad muujisay dadaal muuqda oo tilmaamaya in aad ku jidho waddada saxda ah ee guulo sar-sare aad ku gaadhi laheyd. Haddii aad xoogga saarto maadooyinka u baahan horumar iyo taageero, adigoo kaashanaya macallimiintaada iyo waalidkaaga waxaad gaari doontaa heer sare. Sii wad dadaalkaaga.";
+          } else {
+              customComment = "ha niyad jebin, tani ma'aha dhammaad ee waa bilow cusub. Dadaal, la shaqee macallimiintaada, hana quusan—waad gaadhi kadhaa guushaada!";
+          }
+      }
+
+      // --- TRIGGER ANIMATION ---
+      if (status === 'Gudbay') {
+          const winnerOverlay = document.getElementById('winner-animation');
+          winnerOverlay.style.display = 'flex';
+
+          // Trigger confetti
+          confetti({
+              particleCount: 3000,
+              spread: 360,
+              origin: { y: 0.6 },
+              zIndex: 1001
+          });
+
+          setTimeout(() => { 
+              winnerOverlay.style.display = 'none';
+          }, 2000); // Hide after 3 seconds
+      } else {
+          const loserOverlay = document.getElementById('loser-animation');
+          loserOverlay.style.display = 'flex';
+
+          setTimeout(() => {
+              loserOverlay.style.display = 'none';
+          }, 3000); // Hide after 3 seconds
+      }
+      // --- END OF ANIMATION TRIGGER ---
+
+      let resultHTML = `
+        <div class="student-info-container">
+          <div class="student-info-header">
+            <h3 class="student-info-title">MACLUUMAADKA ARDEYGA</h3>
+            <span class="student-info-badge">IMTIXAAN KALKA 1AAD</span>
+          </div>
+          
+          <div class="student-info-rows">
+            <div class="info-row">
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-id-card"></i></div>
+                  <div>
+                    <div class="info-label">Tira-taxanaha:</div>
+                    <div class="info-value">${student.regNo}</div>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-user-graduate"></i></div>
+                  <div>
+                    <div class="info-label">Magaca Ardeyga:</div>
+                    <div class="info-value">${student.name}<strong></div>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-female"></i></div>
+                  <div>
+                    <div class="info-label">Magaca Hooyada:</div>
+                    <div class="info-value">${student.motherName}</div>
+                  </div>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-school"></i></div>
+                  <div>
+                    <div class="info-label">Fasalka:</div>
+                    <div class="info-value">${student.class}</div>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
+                  <div>
+                    <div class="info-label">Sanad Dugsiyeedka:</div>
+                    <div class="info-value">${student.year}</div>
+                  </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon" style="background-color: ${status === 'Gudbay' ? 'var(--success-green)' : 'var(--danger-red)'};">
+                        <i class="fas ${status === 'Gudbay' ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                    </div>
+                    <div>
+                        <div class="info-label">Go'aanka:</div>
+                        <div class="info-value" style="color: ${status === 'Gudbay' ? 'var(--success-green)' : 'var(--danger-red)'}; font-weight: bold;">
+                        ${status}
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-container">
+          <div class="results-header">
+            <h3 class="results-title">NATIIJADA MAADOOYINKA</h3> 
+            <span class="results-badge"></span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>Maadada</th>
+                  <th>Dhibcaha (la rabo: 40.00)</th>
+                  <th>Boqolkiiba</th>
+                  <th>Darajada</th>
+                  <th>Faallo</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${subjects.map((subject, index) => {
+                  const score = scores[index];
+                  const percentage = ((score / 40) * 100).toFixed(2); // Fixed to 2 decimal places for percentage
+                  const letterGrade = getLetterGrade(percentage);
+                  const comment = getComment(percentage);
+                  
+                  // Performance class based on percentage
+                  let performanceClass = '';
+                  if (percentage >= 80) performanceClass = 'excellent';
+                  else if (percentage >= 70) performanceClass = 'good';
+                  else if (percentage >= 50) performanceClass = 'average';
+                  else performanceClass = 'poor';
+                  
+                  // Calculate width percentage
+                  const widthPercentage = (score / 40) * 100;
+                  
+                  return `
+                    <tr>
+                      <td data-label="Maadada" class="subject-name">${subject}</td>
+                      <td data-label="Dhibcaha" class="grade-cell">
+                        <span class="grade-value">${score.toFixed(2)}</span> <!-- Fixed to 2 decimal places -->
+                        <div class="grade-progress">
+                          <div class="grade-progress-bar ${performanceClass}" style="width: ${widthPercentage}%;"></div>
+                        </div>
+                      </td>
+                      <td data-label="Boqolkiiba">${percentage}%</td>
+                      <td data-label="Darajada">
+                        <span class="performance-indicator ${performanceClass}"></span>
+                        ${letterGrade.grade}
+                      </td>
+                      <td data-label="Faallo">${comment}</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="summary-container">
+          <div class="summary-card total-card">
+            <div style="font-size: 30px; opacity: 0.1; position: absolute; right: 10px; top: 10px;"><i class="fas fa-calculator"></i></div>
+            <div class="summary-title">DARAJADA</div>
+            <div class="summary-value">${total.toFixed(2)}</div> <!-- Fixed to 2 decimal places -->
+          </div>
+          
+          <div class="summary-card average-card">
+            <div style="font-size: 30px; opacity: 0.1; position: absolute; right: 10px; top: 10px;"><i class="fas fa-chart-line"></i></div>
+            <div class="summary-title">CELCELISKA</div>
+            <div class="summary-value">${percentage.toFixed(2)}%</div> <!-- Fixed to 2 decimal places -->
+          </div>
+          
+          <div class="summary-card status-card ${statusClass === 'pass' ? 'success-status' : ''}">
+            <div style="font-size: 30px; opacity: 0.1; position: absolute; right: 10px; top: 10px;">${statusClass === 'pass' ? '<i class="fas fa-trophy"></i>' : '<i class="fas fa-exclamation-triangle"></i>'}</div>
+            <div class="summary-title">GO'AANKA</div>
+            <div class="summary-value">${status} <span class="letter-grade ${overallLetterGrade.class}" style="font-size: 30px;">(${overallLetterGrade.grade})</span></div>
+            <div class="summary-desc">${statusClass === 'pass' ? 'Hambalyo!' : 'Ha niyad jabin, dedaal!'}</div>
+          </div>
+        </div>
+        
+        <div class="final-comment">
+            <div class="comment-header">Faallo Gaar ah</div>
+            <div class="comment-content">
+                 <strong>${student.name}</strong>, ${customComment}
+            </div>
+        </div>
+      `;
+      document.getElementById('result').innerHTML = resultHTML;
+      printBtn.style.display = 'flex';
+      document.getElementById('printDate').textContent = new Date().toLocaleString();
+    }
+
+    // Add event listener for Enter key on the input field
+    document.getElementById('regInput').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            showResult();
+        }
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1084">
+  <title>ZEYN</title>
+  <style>
+    body {
+      font-family: Times New Roman, sans-serif;
+      width: 825px;
+      margin: 0 auto;
+      background-color: white;
+    }
+    .container {
+      padding: 20px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
